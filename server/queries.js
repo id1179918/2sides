@@ -897,11 +897,11 @@ const assignAssetEntityRole = (request, response) => {
     });
 }
 
-// PG QUERY UPDATE LINK
+// PG QUERY UPDATE ASSET
 const upsertAssetForEntity = async (request, response) => {
   const { entityType, entityId, role } = request.body;
 
-  if (!linkType || !url || !entityType || !entityId) {
+  if (!linkType || !entityType || !entityId) {
     return response.status(400).json({
       error: 'Must specify entityType, entityId, role',
     });
