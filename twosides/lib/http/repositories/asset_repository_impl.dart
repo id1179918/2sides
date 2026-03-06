@@ -37,7 +37,7 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> assignAssetArtist(int assetId, int artistId, String role) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/entity/asset', null);
+      var uri = Uri.https(this.baseUrl, '/entity/asset', null);
 
       log("{entityType: 'artist', entityId: ${artistId}, assetId: ${assetId}, role: ${role}}");
 
@@ -63,7 +63,7 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> upsertAssetArtist(int artistId, String role) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/asset', null);
+      var uri = Uri.https(this.baseUrl, '/asset', null);
 
       //log("{entityType: 'artist', entityId: ${artistId}, assetId: ${assetId}, role: ${role}}");
 
@@ -89,7 +89,7 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> deleteAsset(int assetId) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/asset', null);
+      var uri = Uri.https(this.baseUrl, '/asset', null);
 
       var response = client.delete(uri,
         headers: {

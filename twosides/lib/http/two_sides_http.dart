@@ -28,7 +28,7 @@ class TwoSidesHttp extends http.BaseClient {
   final String baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
 
   Future<http.Response> uploadPhoto(XFile photo) async {
-    final Uri uri = Uri.http(this.baseUrl, "/asset", null);
+    final Uri uri = Uri.https(this.baseUrl, "/asset", null);
 
     var request = http.MultipartRequest('POST', uri);
 

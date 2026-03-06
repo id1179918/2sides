@@ -50,8 +50,7 @@ express_app.use(
 )
 
 express_app.use(cors({
-  origin: 'http://localhost:42939',
-  credentials: true,
+  origin: '*',
 }));
 express_app.use(cookieParser());
 

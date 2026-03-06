@@ -22,7 +22,7 @@ class LinkRepositoryImpl implements LinkRepository {
   Future<Auth> upsertLinkEntity(String linkType, String url, String label, String entityType, String entityId) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/entity/link', null);
+      var uri = Uri.https(this.baseUrl, '/entity/link', null);
 
       var response = client.put(uri,
         headers: {
@@ -47,7 +47,7 @@ class LinkRepositoryImpl implements LinkRepository {
   Future<Auth> deleteLink(int linkId) async {
     try {
             var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/entity/link', null);
+      var uri = Uri.https(this.baseUrl, '/entity/link', null);
 
       var response = client.delete(uri,
         headers: {

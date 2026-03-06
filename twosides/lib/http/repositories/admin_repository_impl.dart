@@ -12,12 +12,12 @@ class AdminRepositoryImpl implements AdminRepository {
 
   AdminRepositoryImpl({
     String? baseUrl,
-  }) : baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
+  }) : baseUrl = dotenv.env['BASE_URL'] ?? 'https://2sides-agency.fr/api';
 
   Future<Auth> login(String email, String password) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/admin/login', null);
+      var uri = Uri.https(this.baseUrl, '/admin/login', null);
 
       var response = client.post(uri,
         headers: {
@@ -39,7 +39,7 @@ class AdminRepositoryImpl implements AdminRepository {
   Future<Auth> logout() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/admin/logout', null);
+      var uri = Uri.https(this.baseUrl, '/admin/logout', null);
 
       var response = client.post(uri);
 
@@ -53,7 +53,7 @@ class AdminRepositoryImpl implements AdminRepository {
   Future<Auth> adminCheck() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/admin/me', null);
+      var uri = Uri.https(this.baseUrl, '/admin/me', null);
 
       var response = client.get(uri);
 

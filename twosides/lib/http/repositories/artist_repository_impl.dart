@@ -21,7 +21,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   Future<Artist>getArtistByName(String name) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/artist/name', null);
+      var uri = Uri.https(this.baseUrl, '/artist/name', null);
 
       var response = client.get(uri);
 
@@ -36,7 +36,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   Future<List<Artist>> getAllArtists() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/artists', null);
+      var uri = Uri.https(this.baseUrl, '/artists', null);
 
       var response = client.get(uri);
 
@@ -52,7 +52,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   Future<Artist> getArtistById(int id) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/artist', null);
+      var uri = Uri.https(this.baseUrl, '/artist', null);
 
       Map<String, String>? headersJson = {'id': id.toString()};
 
@@ -70,7 +70,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   Future<Auth> createArtist(String name, String style) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.http(this.baseUrl, '/artist', null);
+      var uri = Uri.https(this.baseUrl, '/artist', null);
 
       Map<String, String>? headersJson = {'name': name, 'style': style};
 
@@ -101,7 +101,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
     try {
       var client = TwoSidesHttp();
 
-      var uri = Uri.http(this.baseUrl, '/entity/assets', null);
+      var uri = Uri.https(this.baseUrl, '/entity/assets', null);
 
       Map<String, String>? headersJson = {'entityType': "artist", 'entityId': artistId.toString()};
 
@@ -118,7 +118,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
     try {
       var client = TwoSidesHttp();
 
-      var uri = Uri.http(this.baseUrl, '/entity/links', null);
+      var uri = Uri.https(this.baseUrl, '/entity/links', null);
 
       Map<String, String>? headersJson = {'entityType': "artist", 'entityId': artistId.toString()};
 
@@ -135,7 +135,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
     try {
       var client = TwoSidesHttp();
 
-      var uri = Uri.http(this.baseUrl, '/artist', null);
+      var uri = Uri.https(this.baseUrl, '/artist', null);
 
       var response = client.put(uri,
         headers: {

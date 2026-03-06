@@ -35,7 +35,7 @@ final linkRepositoryProvider = Provider<LinkRepository>((ref) {
 final authProvider = FutureProvider<bool>((ref) async {
   var client = TwoSidesHttp();
   final String baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
-  var uri = Uri.http(baseUrl, '/admin/me', null);
+  var uri = Uri.https(baseUrl, '/admin/me', null);
   log(uri.toString());
   final response = await client.get(uri);
   log(response.statusCode.toString());
