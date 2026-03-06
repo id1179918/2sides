@@ -178,11 +178,16 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
           Container(
             height: MediaQuery.of(context).size.height * 0.06,
             width:  MediaQuery.of(context).size.width / 3,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("bla bla"),
-              ]
+            child: Center(
+              child: GestureDetector(
+                child: Text(
+                  "PressKit - ${widget.artist.name}"
+                ),
+                onTap: () async {
+                  //final emailUri = Uri.parse('mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
+                  //await launchUrl(emailUri);
+                }
+              ),
             ),
             decoration: BoxDecoration(
               border: Border(
