@@ -35,7 +35,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   Future<List<Artist>> getAllArtists() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/api/artists', null);
+      var uri = Uri.https(this.baseUrl, '/artists', null);
 
       var response = client.get(uri);
 

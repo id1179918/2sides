@@ -109,7 +109,8 @@ class TwoSidesHttp extends http.BaseClient {
     await _handleErrorResponse(response);
 
     try {
-      log(response.toString());
+      log('RAW BODY: ${response.body}');
+      log('STATUS: ${response.statusCode}');
 
       final List<dynamic> decodedList = jsonDecode(response.body);
       return decodedList
