@@ -34,11 +34,15 @@ class ArtistRepositoryImpl implements ArtistRepository {
   @override
   Future<List<Artist>> getAllArtists() async {
     try {
+      log('1. Creating client');
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/artists', null);
+      log('2. Create URI');
+      var uri = Uri.https('${this.baseUrl}/artists');
 
+      log('3. Create Rsp');
       var response = client.get(uri);
 
+      log('2. Return Await');
       return await client.handleListResponse<Artist>(
           response, (json) => Artist.fromJson(json));
     } catch (e) {
