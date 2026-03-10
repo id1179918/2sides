@@ -39,8 +39,6 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var response = client.get(uri);
 
-      log(response.toString());
-
       return await client.handleListResponse<Artist>(
           response, (json) => Artist.fromJson(json));
     } catch (e) {

@@ -16,11 +16,9 @@ class InvalidCredentials implements Exception {
   InvalidCredentials();
 }
 
-
 class NoInternetException implements Exception {
   NoInternetException();
 }
-
 
 class TwoSidesHttp extends http.BaseClient {
   static String httpLocale = 'fr_FR';
@@ -47,15 +45,12 @@ class TwoSidesHttp extends http.BaseClient {
 
     http.StreamedResponse streamedResponse = await send(request);
 
-
-
     return http.Response.fromStream(streamedResponse);
   }
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     try {
-
       if (request is http.Request) {
         if (request.body.isNotEmpty) {
           request.headers.addAll({"Content-Type": "application/json"});
@@ -66,8 +61,8 @@ class TwoSidesHttp extends http.BaseClient {
       log("##HTTP : ${request.method} ${request.url}");
       request.headers['credentials'] = 'include';
 
-      return await _client.send(request).timeout(
-        const Duration(seconds: 20), onTimeout: () {
+      return await _client.send(request).timeout(const Duration(seconds: 20),
+          onTimeout: () {
         throw TimeoutException("Timeout");
       });
     } catch (e) {
@@ -114,6 +109,8 @@ class TwoSidesHttp extends http.BaseClient {
     await _handleErrorResponse(response);
 
     try {
+      log(response.toString());
+
       final List<dynamic> decodedList = jsonDecode(response.body);
       return decodedList
           .map((jsonItem) => onSuccess(jsonItem as Map<String, dynamic>))
