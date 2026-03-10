@@ -9,7 +9,7 @@ import 'package:twosides/constants/routes.dart';
 import 'package:twosides/gen/assets.gen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-enum SampleItem { itemOne, itemTwo, itemThree}
+enum SampleItem { itemOne, itemTwo, itemThree }
 
 class MenuDropDown extends StatefulWidget {
   const MenuDropDown({super.key, required this.currentPage});
@@ -21,17 +21,12 @@ class MenuDropDown extends StatefulWidget {
 
 class _MenuDropDownState extends State<MenuDropDown> {
   SampleItem _dropdownvalue = SampleItem.itemTwo;
-  var _items = [
-    '2Sides',
-    'Booking',
-    'About'
-  ];
+  var _items = ['2Sides', 'Booking', 'About'];
   //var _routes = [
   //  '2Sides',
   //  'Booking',
   //  'About',
   //];
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +37,8 @@ class _MenuDropDownState extends State<MenuDropDown> {
       case "About":
         _dropdownvalue = SampleItem.itemThree;
         break;
-    };
+    }
+    ;
 
     return PopupMenuButton<SampleItem>(
       icon: Icon(Icons.menu, size: 50),
@@ -53,14 +49,16 @@ class _MenuDropDownState extends State<MenuDropDown> {
         });
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
-        PopupMenuItem<SampleItem>(value: SampleItem.itemOne, child: Text(_items[0])),
-        PopupMenuItem<SampleItem>(value: SampleItem.itemTwo, child: Text(_items[1])),
-        PopupMenuItem<SampleItem>(value: SampleItem.itemThree, child: Text(_items[2])),
+        PopupMenuItem<SampleItem>(
+            value: SampleItem.itemOne, child: Text(_items[0])),
+        PopupMenuItem<SampleItem>(
+            value: SampleItem.itemTwo, child: Text(_items[1])),
+        PopupMenuItem<SampleItem>(
+            value: SampleItem.itemThree, child: Text(_items[2])),
       ],
     );
   }
 }
-
 
 class BookingPageHeader extends ConsumerWidget {
   BookingPageHeader({super.key});
@@ -70,100 +68,100 @@ class BookingPageHeader extends ConsumerWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.12,
       color: Colors.black,
-      child:
-        Row(
-          children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "BOOKING",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Prophet',
-                          fontSize: 100,
-                          fontWeight: FontWeight.bold,
-                          height: 0.9,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text(
-                          "2sidesbooking@gmail.com",
-                            style: const TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'NeueMetanaNext',
-                            fontSize: 20,
-                            height: 0.9,
-                          ),
-                        )
-                      ),
-                    ]
+      child: Row(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "BOOKING",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Prophet',
+                    fontSize: 100,
+                    fontWeight: FontWeight.bold,
+                    height: 0.9,
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                          onPressed: () {Navigator.pushNamed(context, '${RoutingPageNames.booking}');},
-                          child: const Text(
-                            'BOOKING',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'PROD EVENT',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'ADMIN',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {Navigator.pushNamed(context, '${RoutingPageNames.about}');},
-                          child: const Text(
-                            'ABOUT',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                      ],
-                    ),
-                  ),
-                ),
-          ]
+                Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    child: Text(
+                      "2sidesbooking@gmail.com",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'NeueMetanaNext',
+                        fontSize: 20,
+                        height: 0.9,
+                      ),
+                    )),
+              ]),
         ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, '${RoutingPageNames.booking}');
+                    },
+                    child: const Text(
+                      'BOOKING',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'PROD EVENT',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'ADMIN',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '${RoutingPageNames.about}');
+                    },
+                    child: const Text(
+                      'ABOUT',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+              ],
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
@@ -175,81 +173,80 @@ class AboutPageHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.12,
-      child:
-        Row(
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                child: Text(
-                  "ABOUT",
-                  style: const TextStyle(
-                    color: TwoSidesColors.textColor,
-                    fontFamily: 'Prophet',
-                    fontSize: 110,
-                    fontWeight: FontWeight.bold,
-                    height: 0.9,
-                  ),
-                ),
+      child: Row(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Text(
+              "ABOUT",
+              style: const TextStyle(
+                color: TwoSidesColors.textColor,
+                fontFamily: 'Prophet',
+                fontSize: 110,
+                fontWeight: FontWeight.bold,
+                height: 0.9,
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, MediaQuery.of(context).size.width * 0.05, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '${RoutingPageNames.booking}');
-                        },
-                        child: const Text(
-                          'BOOKING',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Boldonse',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 0.9,
-                          ),
-                      )),
-                    TextButton(
-                        onPressed: null,
-                        //() {
-                        //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
-                        //},
-                        child: const Text(
-                          'PROD EVENT',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Boldonse',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 0.9,
-                          ),
-                      )),
-                    
-                    TextButton(
-                        onPressed: null,
-                        //() {
-                        //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
-                        //},
-                        child: const Text(
-                          'ADMIN',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Boldonse',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 0.9,
-                          ),
-                      )),
-                    
-                    TextButton(
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, MediaQuery.of(context).size.width * 0.05, 0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '${RoutingPageNames.about}');
+                        Navigator.pushNamed(
+                            context, '${RoutingPageNames.booking}');
+                      },
+                      child: const Text(
+                        'BOOKING',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Boldonse',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          height: 0.9,
+                        ),
+                      )),
+                  TextButton(
+                      onPressed: null,
+                      //() {
+                      //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
+                      //},
+                      child: const Text(
+                        'PROD EVENT',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Boldonse',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          height: 0.9,
+                        ),
+                      )),
+                  TextButton(
+                      onPressed: null,
+                      //() {
+                      //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
+                      //},
+                      child: const Text(
+                        'ADMIN',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Boldonse',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          height: 0.9,
+                        ),
+                      )),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, '${RoutingPageNames.about}');
                       },
                       child: const Text(
                         'ABOUT',
@@ -260,13 +257,11 @@ class AboutPageHeader extends ConsumerWidget {
                           fontWeight: FontWeight.bold,
                           height: 0.9,
                         ),
-                    )),
-                  ]
-                ),
-              ),
-            ),
-          ]
+                      )),
+                ]),
+          ),
         ),
+      ]),
     );
   }
 }
@@ -294,7 +289,9 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
-            onTap: () {Navigator.pushNamed(context, widget.route);},
+            onTap: () {
+              Navigator.pushNamed(context, widget.route);
+            },
             child: Text(
               widget.text,
               style: TextStyle(
@@ -313,7 +310,9 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
             height: 3,
             //width: _hovered ? 140 : 0, // animate left → right
             decoration: BoxDecoration(
-              color: _hovered ? TwoSidesColors.primaryColor : TwoSidesColors.secondaryColor,
+              color: _hovered
+                  ? TwoSidesColors.primaryColor
+                  : TwoSidesColors.secondaryColor,
             ),
           ),
         ],
@@ -321,7 +320,6 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
     );
   }
 }
-
 
 class HomePageHeader extends ConsumerWidget {
   HomePageHeader({super.key});
@@ -342,8 +340,8 @@ class HomePageHeader extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    AnimatedUnderlineButton(text: "NOUVEAU", route: RoutingPageNames.booking),
-
+                    AnimatedUnderlineButton(
+                        text: "BOOKING", route: RoutingPageNames.booking),
                   ],
                 ),
               ),
@@ -352,8 +350,8 @@ class HomePageHeader extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    AnimatedUnderlineButton(text: "PROD EVENT", route: RoutingPageNames.booking),
-
+                    AnimatedUnderlineButton(
+                        text: "PROD EVENT", route: RoutingPageNames.booking),
                   ],
                 ),
               ),
@@ -362,8 +360,8 @@ class HomePageHeader extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    AnimatedUnderlineButton(text: "ADMIN",route: RoutingPageNames.booking),
-
+                    AnimatedUnderlineButton(
+                        text: "ADMIN", route: RoutingPageNames.booking),
                   ],
                 ),
               ),
@@ -372,8 +370,8 @@ class HomePageHeader extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    AnimatedUnderlineButton(text: "ABOUT", route: RoutingPageNames.about),
-
+                    AnimatedUnderlineButton(
+                        text: "ABOUT", route: RoutingPageNames.about),
                   ],
                 ),
               ),
@@ -466,11 +464,9 @@ class HomePageHeader extends ConsumerWidget {
           ),
         ),
       ),
-
     );
   }
 }
-
 
 class ArtistPageHeader extends ConsumerWidget {
   ArtistPageHeader({super.key});
@@ -480,79 +476,74 @@ class ArtistPageHeader extends ConsumerWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       color: TwoSidesColors.backgroundColor,
-      child:
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Center(
-                    child: Image.asset(
-                      scale: 9,
-                      Assets.images.lOGO2sidesEnvent.path,
-                    ),
-                  )
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'BOOKING',
-                            style: const TextStyle(
-                              color: TwoSidesColors.textColor,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'PROD EVENT',
-                            style: const TextStyle(
-                              color: TwoSidesColors.textColor,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'ADMIN',
-                            style: const TextStyle(
-                              color: TwoSidesColors.textColor,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'ABOUT',
-                            style: const TextStyle(
-                              color: TwoSidesColors.textColor,
-                              fontFamily: 'Boldonse',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 0.9,
-                            ),
-                        )),
-                      ],
-                    ),
-                  ),
-                ),
-          ]
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: Center(
+              child: Image.asset(
+                scale: 9,
+                Assets.images.lOGO2sidesEnvent.path,
+              ),
+            )),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'BOOKING',
+                      style: const TextStyle(
+                        color: TwoSidesColors.textColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'PROD EVENT',
+                      style: const TextStyle(
+                        color: TwoSidesColors.textColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'ADMIN',
+                      style: const TextStyle(
+                        color: TwoSidesColors.textColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'ABOUT',
+                      style: const TextStyle(
+                        color: TwoSidesColors.textColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 0.9,
+                      ),
+                    )),
+              ],
+            ),
+          ),
         ),
+      ]),
     );
   }
 }
