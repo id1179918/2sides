@@ -37,7 +37,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
       log('1. Creating client');
       var client = TwoSidesHttp();
       log('2. Create URI');
-      var uri = Uri.parse('https://${this.baseUrl}/artists');
+      var uri = Uri.parse('https://2sides-agency.fr/api/artists');
 
       log('3. Create Rsp');
       var response = client.get(uri);
