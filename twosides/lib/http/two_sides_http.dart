@@ -76,10 +76,7 @@ class TwoSidesHttp extends http.BaseClient {
   Future<dynamic> _handleErrorResponse(http.Response response) async {
     if (response.statusCode >= 400 && response.statusCode < 600) {
       try {
-        final error = errorFromJson(response.body);
-        if (error.key == "Invalid credentials") {
-          throw InvalidCredentials();
-        }
+        throw Exception('Server returned ${response.statusCode}');
       } catch (e) {
         rethrow;
       }
