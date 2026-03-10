@@ -9,7 +9,6 @@ import 'package:twosides/models/asset.dart';
 import 'package:twosides/models/link.dart';
 import 'package:twosides/models/auth.dart';
 
-
 class ArtistRepositoryImpl implements ArtistRepository {
   final String baseUrl;
 
@@ -18,15 +17,15 @@ class ArtistRepositoryImpl implements ArtistRepository {
   }) : baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
 
   @override
-  Future<Artist>getArtistByName(String name) async {
+  Future<Artist> getArtistByName(String name) async {
     try {
       var client = TwoSidesHttp();
       var uri = Uri.https(this.baseUrl, '/artist/name', null);
 
       var response = client.get(uri);
 
-      return await client.handleResponse<Artist>(response, (json)=> Artist.fromJson(json));
-
+      return await client.handleResponse<Artist>(
+          response, (json) => Artist.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -40,8 +39,10 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var response = client.get(uri);
 
-      return await client.handleListResponse<Artist>(response, (json)=> Artist.fromJson(json));
+      log(response.toString());
 
+      return await client.handleListResponse<Artist>(
+          response, (json) => Artist.fromJson(json));
     } catch (e) {
       log("Error API: " + e.toString());
       rethrow;
@@ -58,8 +59,8 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var response = client.get(uri, headers: headersJson);
 
-      return await client.handleResponse<Artist>(response, (json)=> Artist.fromJson(json));
-
+      return await client.handleResponse<Artist>(
+          response, (json) => Artist.fromJson(json));
     } catch (e) {
       log("Error API: " + e.toString());
       rethrow;
@@ -78,8 +79,8 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var response = client.post(uri, headers: headersJson);
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       log("Error API: " + e.toString());
       rethrow;
@@ -103,11 +104,15 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var uri = Uri.https(this.baseUrl, '/entity/assets', null);
 
-      Map<String, String>? headersJson = {'entityType': "artist", 'entityId': artistId.toString()};
+      Map<String, String>? headersJson = {
+        'entityType': "artist",
+        'entityId': artistId.toString()
+      };
 
       var response = client.get(uri, headers: headersJson);
 
-      return await client.handleListResponse<Asset>(response, (json)=> Asset.fromJson(json));
+      return await client.handleListResponse<Asset>(
+          response, (json) => Asset.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -120,11 +125,15 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
       var uri = Uri.https(this.baseUrl, '/entity/links', null);
 
-      Map<String, String>? headersJson = {'entityType': "artist", 'entityId': artistId.toString()};
+      Map<String, String>? headersJson = {
+        'entityType': "artist",
+        'entityId': artistId.toString()
+      };
 
       var response = client.get(uri, headers: headersJson);
 
-      return await client.handleListResponse<Link>(response, (json)=> Link.fromJson(json));
+      return await client.handleListResponse<Link>(
+          response, (json) => Link.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -138,19 +147,19 @@ class ArtistRepositoryImpl implements ArtistRepository {
       var uri = Uri.https(this.baseUrl, '/artist', null);
 
       var response = client.put(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "id": artist.id,
-          "name": artist.name,
-          "location": artist.location ?? "",
-          "style": artist.style ?? "",
-          "description": artist.description ?? ""
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "id": artist.id,
+            "name": artist.name,
+            "location": artist.location ?? "",
+            "style": artist.style ?? "",
+            "description": artist.description ?? ""
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
