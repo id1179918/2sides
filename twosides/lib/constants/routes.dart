@@ -1,5 +1,7 @@
 import 'package:url_launcher/url_launcher.dart';
 
+final String httpsHead = "https://";
+
 class RoutingPageNames {
   static const String booking = "/booking";
   static const String about = "/about";

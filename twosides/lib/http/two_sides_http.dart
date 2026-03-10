@@ -11,6 +11,7 @@ import 'package:twosides/models/artist.dart';
 import 'package:twosides/http/auth_manager.dart';
 import 'package:twosides/models/api_error.dart';
 import 'package:cross_file/cross_file.dart';
+import 'package:twosides/constants/routes.dart';
 
 class InvalidCredentials implements Exception {
   InvalidCredentials();
@@ -26,7 +27,7 @@ class TwoSidesHttp extends http.BaseClient {
   final String baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
 
   Future<http.Response> uploadPhoto(XFile photo) async {
-    final Uri uri = Uri.https(this.baseUrl, "/asset", null);
+    final Uri uri = Uri.parse("${httpsHead}${baseUrl}/asset");
 
     var request = http.MultipartRequest('POST', uri);
 

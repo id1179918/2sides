@@ -9,7 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/models/asset.dart';
 import 'package:twosides/models/link.dart';
 import 'package:twosides/models/auth.dart';
-
+import 'package:twosides/constants/routes.dart';
 
 class LinkRepositoryImpl implements LinkRepository {
   final String baseUrl;
@@ -19,25 +19,26 @@ class LinkRepositoryImpl implements LinkRepository {
   }) : baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
 
   @override
-  Future<Auth> upsertLinkEntity(String linkType, String url, String label, String entityType, String entityId) async {
+  Future<Auth> upsertLinkEntity(String linkType, String url, String label,
+      String entityType, String entityId) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/entity/link', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/entity/link');
 
       var response = client.put(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "linkType": linkType,
-          "url": url,
-          "label": label,
-          "entityType": entityType,
-          "entityId": entityId,
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "linkType": linkType,
+            "url": url,
+            "label": label,
+            "entityType": entityType,
+            "entityId": entityId,
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -46,19 +47,19 @@ class LinkRepositoryImpl implements LinkRepository {
   @override
   Future<Auth> deleteLink(int linkId) async {
     try {
-            var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/entity/link', null);
+      var client = TwoSidesHttp();
+      var uri = Uri.parse('${httpsHead}${baseUrl}/entity/link');
 
       var response = client.delete(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "linkId": linkId,
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "linkId": linkId,
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }

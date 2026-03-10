@@ -5,7 +5,7 @@ import 'package:twosides/http/repositories/admin_repository.dart';
 import 'package:twosides/http/two_sides_http.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/models/auth.dart';
-
+import 'package:twosides/constants/routes.dart';
 
 class AdminRepositoryImpl implements AdminRepository {
   final String baseUrl;
@@ -17,20 +17,19 @@ class AdminRepositoryImpl implements AdminRepository {
   Future<Auth> login(String email, String password) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/admin/login', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/admin/login');
 
       var response = client.post(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            'email': email,
+            'password': password,
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -39,12 +38,12 @@ class AdminRepositoryImpl implements AdminRepository {
   Future<Auth> logout() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/admin/logout', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/admin/logout');
 
       var response = client.post(uri);
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -53,12 +52,14 @@ class AdminRepositoryImpl implements AdminRepository {
   Future<Auth> adminCheck() async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/admin/me', null);
+      var uri = Uri.parse(
+        '${httpsHead}${baseUrl}/admin/me',
+      );
 
       var response = client.get(uri);
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }

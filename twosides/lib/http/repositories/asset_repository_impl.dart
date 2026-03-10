@@ -11,7 +11,7 @@ import 'package:twosides/models/link.dart';
 import 'package:twosides/models/auth.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:cross_file/cross_file.dart';
-
+import 'package:twosides/constants/routes.dart';
 
 class AssetRepositoryImpl implements AssetRepository {
   final String baseUrl;
@@ -27,7 +27,7 @@ class AssetRepositoryImpl implements AssetRepository {
 
       var response = client.uploadPhoto(file);
 
-      return await client.handleResponse<int>(response, (json)=> json['id']);
+      return await client.handleResponse<int>(response, (json) => json['id']);
     } catch (e) {
       rethrow;
     }
@@ -37,24 +37,23 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> assignAssetArtist(int assetId, int artistId, String role) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/entity/asset', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/entity/asset');
 
       log("{entityType: 'artist', entityId: ${artistId}, assetId: ${assetId}, role: ${role}}");
 
       var response = client.post(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "entityType": "artist",
-          "entityId": artistId.toString(),
-          "assetId": assetId.toString(),
-          "role": role,
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "entityType": "artist",
+            "entityId": artistId.toString(),
+            "assetId": assetId.toString(),
+            "role": role,
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -63,23 +62,22 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> upsertAssetArtist(int artistId, String role) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/asset', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/asset');
 
       //log("{entityType: 'artist', entityId: ${artistId}, assetId: ${assetId}, role: ${role}}");
 
       var response = client.put(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "entityType": "artist",
-          "entityId": artistId.toString(),
-          "role": role,
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "entityType": "artist",
+            "entityId": artistId.toString(),
+            "role": role,
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
@@ -89,19 +87,18 @@ class AssetRepositoryImpl implements AssetRepository {
   Future<Auth> deleteAsset(int assetId) async {
     try {
       var client = TwoSidesHttp();
-      var uri = Uri.https(this.baseUrl, '/asset', null);
+      var uri = Uri.parse('${httpsHead}${baseUrl}/asset');
 
       var response = client.delete(uri,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "assetId": assetId.toString(),
-        })
-      );
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "assetId": assetId.toString(),
+          }));
 
-      return await client.handleResponse<Auth>(response, (json)=> Auth.fromJson(json));
-
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
     } catch (e) {
       rethrow;
     }
