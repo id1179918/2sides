@@ -69,6 +69,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - packages/wakelock_plus/assets/
     - assets/images/
     - .env
   fonts:
