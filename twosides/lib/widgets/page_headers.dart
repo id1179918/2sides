@@ -341,7 +341,7 @@ class HomePageHeader extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     AnimatedUnderlineButton(
-                        text: "BOOKINGS", route: RoutingPageNames.booking),
+                        text: "BOOKING", route: RoutingPageNames.booking),
                   ],
                 ),
               ),
