@@ -20,23 +20,25 @@ class ProdEventPage extends ConsumerWidget {
         ProdEventPageHeader(),
         SizedBox(
             height: MediaQuery.of(context).size.height * 0.58,
-            child: Column(
-              children: [
-                Image.asset(
-                  scale: 5,
-                  Assets.images.lOGO2sidesEnvent.path,
-                ),
-                Text(
-                  "Désolé, cette page n'est pas encore disponible...",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Boldonse',
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    //height: 0.9,
+            child: Center(
+              child: Column(
+                children: [
+                  Image.asset(
+                    scale: 5,
+                    Assets.images.lOGO2sidesEnvent.path,
                   ),
-                ),
-              ],
+                  Text(
+                    "Désolé, cette page n'est pas encore disponible...",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Boldonse',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      //height: 0.9,
+                    ),
+                  ),
+                ],
+              ),
             )),
         const PageFooter(),
       ]),

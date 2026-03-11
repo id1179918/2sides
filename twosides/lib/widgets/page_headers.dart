@@ -242,7 +242,7 @@ class ProdEventPageHeader extends ConsumerWidget {
       height: MediaQuery.of(context).size.height * 0.12,
       child: Row(children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
+          width: MediaQuery.of(context).size.width * 0.4,
           child: const Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Text(
@@ -258,7 +258,7 @@ class ProdEventPageHeader extends ConsumerWidget {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.7,
+          width: MediaQuery.of(context).size.width * 0.6,
           child: Padding(
             padding: EdgeInsets.fromLTRB(
                 0, 0, MediaQuery.of(context).size.width * 0.05, 0),
@@ -326,7 +326,7 @@ class AdminOrgPageHeader extends ConsumerWidget {
           child: const Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Text(
-              "PROD. EVENT",
+              "ADMIN",
               style: TextStyle(
                 color: TwoSidesColors.textColor,
                 fontFamily: 'Prophet',
