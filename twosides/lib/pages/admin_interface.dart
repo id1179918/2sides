@@ -39,6 +39,7 @@ class _AddPressKitState extends ConsumerState<AddPressKit> {
         .firstWhere((Asset asset) => asset.role == AssetRole.presskit);
 
     log("hasPresskit: " + hasPresskit.toString());
+    print("hasPresskit: " + hasPresskit.toString());
 
     return Text(_presskit.toString());
 
