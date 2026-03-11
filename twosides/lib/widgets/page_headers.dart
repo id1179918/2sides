@@ -109,7 +109,7 @@ class BookingPageHeader extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AnimatedUnderlineButtonSmall(
+                      AnimatedUnderlineButtonSmallBlack(
                           text: "BOOKING", route: RoutingPageNames.booking),
                     ],
                   ),
@@ -119,7 +119,7 @@ class BookingPageHeader extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AnimatedUnderlineButtonSmall(
+                      AnimatedUnderlineButtonSmallBlack(
                           text: "PROD EVENT", route: RoutingPageNames.booking),
                     ],
                   ),
@@ -129,7 +129,7 @@ class BookingPageHeader extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AnimatedUnderlineButtonSmall(
+                      AnimatedUnderlineButtonSmallBlack(
                           text: "ADMIN", route: RoutingPageNames.booking),
                     ],
                   ),
@@ -139,7 +139,7 @@ class BookingPageHeader extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AnimatedUnderlineButtonSmall(
+                      AnimatedUnderlineButtonSmallBlack(
                           text: "ABOUT", route: RoutingPageNames.about),
                     ],
                   ),
@@ -230,6 +230,63 @@ class AboutPageHeader extends ConsumerWidget {
           ),
         ),
       ]),
+    );
+  }
+}
+
+class AnimatedUnderlineButtonSmallBlack extends StatefulWidget {
+  AnimatedUnderlineButtonSmallBlack(
+      {super.key, required this.text, required this.route});
+  final String text;
+  final String route;
+
+  @override
+  State<AnimatedUnderlineButtonSmallBlack> createState() =>
+      _AnimatedUnderlineButtonSmallBlackState();
+}
+
+class _AnimatedUnderlineButtonSmallBlackState
+    extends State<AnimatedUnderlineButtonSmallBlack> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, widget.route);
+            },
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Boldonse',
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          // Animated underline
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutCubic,
+            height: 3,
+            //width: _hovered ? 140 : 0, // animate left → right
+            decoration: BoxDecoration(
+              color: _hovered
+                  ? TwoSidesColors.primaryColor
+                  : TwoSidesColors.secondaryColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
