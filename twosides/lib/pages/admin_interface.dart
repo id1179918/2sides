@@ -904,6 +904,11 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
           )
         ]),
       ),
+      Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: AddPressKit(
+            artist: widget.artist,
+          )),
       Row(children: [
         ElevatedButton(
           onPressed: () async {
