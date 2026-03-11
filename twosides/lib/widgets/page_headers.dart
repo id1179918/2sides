@@ -175,7 +175,7 @@ class AboutPageHeader extends ConsumerWidget {
       height: MediaQuery.of(context).size.height * 0.12,
       child: Row(children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.3,
           child: Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Text(
@@ -191,7 +191,7 @@ class AboutPageHeader extends ConsumerWidget {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.7,
           child: Padding(
             padding: EdgeInsets.fromLTRB(
                 0, 0, MediaQuery.of(context).size.width * 0.05, 0),
