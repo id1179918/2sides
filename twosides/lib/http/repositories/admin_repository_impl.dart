@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:twosides/constants/env.dart';
 import 'dart:developer';
 import 'package:twosides/http/repositories/admin_repository.dart';
 import 'package:twosides/http/two_sides_http.dart';
@@ -12,7 +13,7 @@ class AdminRepositoryImpl implements AdminRepository {
 
   AdminRepositoryImpl({
     String? baseUrl,
-  }) : baseUrl = dotenv.env['BASE_URL'] ?? 'https://2sides-agency.fr/api';
+  }) : baseUrl = Env.baseUrl;
 
   Future<Auth> login(String email, String password) async {
     try {

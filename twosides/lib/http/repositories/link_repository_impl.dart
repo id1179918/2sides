@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:twosides/constants/env.dart';
 import 'dart:developer';
 import 'dart:io';
 import 'package:twosides/models/artist.dart';
@@ -16,7 +17,7 @@ class LinkRepositoryImpl implements LinkRepository {
 
   LinkRepositoryImpl({
     String? baseUrl,
-  }) : baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
+  }) : baseUrl = Env.baseUrl;
 
   @override
   Future<Auth> upsertLinkEntity(String linkType, String url, String label,

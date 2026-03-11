@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/browser_client.dart';
 import 'package:path/path.dart';
+import 'package:twosides/constants/env.dart';
 import 'package:twosides/models/artist.dart';
 import 'package:twosides/http/auth_manager.dart';
 import 'package:twosides/models/api_error.dart';
@@ -24,7 +25,7 @@ class NoInternetException implements Exception {
 class TwoSidesHttp extends http.BaseClient {
   static String httpLocale = 'fr_FR';
   final http.Client _client = BrowserClient()..withCredentials = true;
-  final String baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
+  final String baseUrl = Env.baseUrl;
 
   Future<http.Response> uploadPhoto(XFile photo) async {
     final Uri uri = Uri.parse("${httpsHead}${baseUrl}/asset");

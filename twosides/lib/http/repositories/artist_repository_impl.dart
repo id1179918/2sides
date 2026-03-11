@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:twosides/constants/env.dart';
 import 'package:twosides/constants/routes.dart';
 import 'dart:developer';
 import 'package:twosides/models/artist.dart';
@@ -15,7 +16,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
 
   ArtistRepositoryImpl({
     String? baseUrl,
-  }) : baseUrl = dotenv.env['BASE_URL'] ?? 'http://localhost:3000';
+  }) : baseUrl = Env.baseUrl;
 
   @override
   Future<Artist> getArtistByName(String name) async {
