@@ -42,7 +42,7 @@ class _AddPressKitState extends ConsumerState<AddPressKit> {
         padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
         child: Column(children: [
           Text(
-            presskit.originalName,
+            "${widget.artist.name} - Presskit",
           ),
           ElevatedButton(
             onPressed: () async {
