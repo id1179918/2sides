@@ -198,70 +198,108 @@ class AboutPageHeader extends ConsumerWidget {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, '${RoutingPageNames.booking}');
-                      },
-                      child: const Text(
-                        'BOOKING',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Boldonse',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          height: 0.9,
-                        ),
-                      )),
-                  TextButton(
-                      onPressed: null,
-                      //() {
-                      //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
-                      //},
-                      child: const Text(
-                        'PROD EVENT',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Boldonse',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          height: 0.9,
-                        ),
-                      )),
-                  TextButton(
-                      onPressed: null,
-                      //() {
-                      //  //Navigator.pushNamed(context, '${RoutingPageNames.booking}');
-                      //},
-                      child: const Text(
-                        'ADMIN',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Boldonse',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          height: 0.9,
-                        ),
-                      )),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, '${RoutingPageNames.about}');
-                      },
-                      child: const Text(
-                        'ABOUT',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Boldonse',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          height: 0.9,
-                        ),
-                      )),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButton(
+                            text: "BOOKING", route: RoutingPageNames.booking),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButton(
+                            text: "PROD EVENT",
+                            route: RoutingPageNames.booking),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButton(
+                            text: "ADMIN", route: RoutingPageNames.booking),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButton(
+                            text: "ABOUT", route: RoutingPageNames.about),
+                      ],
+                    ),
+                  ),
                 ]),
           ),
         ),
       ]),
+    );
+  }
+}
+
+class AnimatedUnderlineButtonSmall extends StatefulWidget {
+  AnimatedUnderlineButtonSmall(
+      {super.key, required this.text, required this.route});
+  final String text;
+  final String route;
+
+  @override
+  State<AnimatedUnderlineButtonSmall> createState() =>
+      _AnimatedUnderlineButtonSmallState();
+}
+
+class _AnimatedUnderlineButtonSmallState
+    extends State<AnimatedUnderlineButtonSmall> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, widget.route);
+            },
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Boldonse',
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          // Animated underline
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutCubic,
+            height: 3,
+            //width: _hovered ? 140 : 0, // animate left → right
+            decoration: BoxDecoration(
+              color: _hovered
+                  ? TwoSidesColors.primaryColor
+                  : TwoSidesColors.secondaryColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
