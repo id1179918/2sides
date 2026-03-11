@@ -15,6 +15,7 @@ import 'package:twosides/widgets/page_footer.dart';
 import 'package:twosides/widgets/horizontal_carousel.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/env.dart';
 
@@ -59,13 +60,10 @@ class LinkIconButton extends StatelessWidget {
         height: 40,
         width: 40,
         child: GestureDetector(
-          onTap: () async {
-            goToUrl(_url);
-          },
-          child: Image.asset(
-            _image,
-          ),
-        ),
+            onTap: () async {
+              goToUrl(_url);
+            },
+            child: SvgPicture.asset(_image)),
       ),
     );
   }
