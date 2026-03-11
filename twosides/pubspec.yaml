@@ -58,6 +58,7 @@ dev_dependencies:
   flutter_widget_from_html: ^0.17.1
   wakelock_plus: ^1.4.0
   flutter_svg: ^2.0.0
+  collection: ^1.18.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -15,6 +15,7 @@ import 'package:twosides/gen/assets.gen.dart';
 import 'package:twosides/widgets/page_headers.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:cross_file/cross_file.dart';
+import 'package:collection/collection.dart';
 
 final String imageUrl = Env.imageUrl;
 
@@ -31,116 +32,106 @@ class _AddPressKitState extends ConsumerState<AddPressKit> {
 
   @override
   Widget build(BuildContext context) {
-    Asset? _presskit;
-    bool hasPresskit = widget.artist.assets!
-        .contains((Asset asset) => asset.role == AssetRole.presskit);
+    Asset? presskit;
 
-    _presskit = widget.artist.assets!
-        .firstWhere((Asset asset) => asset.role == AssetRole.presskit);
+    presskit = widget.artist.assets!
+        .firstWhereOrNull((asset) => asset.role == AssetRole.presskit);
 
-    print("hasPresskit: " + hasPresskit.toString());
-    print("_presskit: " + _presskit.toString());
-    print("assets" + widget.artist.assets!.toFormattedString());
-
-    return Text(_presskit.toString());
-
-    //if (hasPresskit) {
-    //  _presskit = widget.artist.assets!
-    //      .firstWhere((Asset asset) => asset.role == AssetRole.presskit);
-    //  return Padding(
-    //    padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-    //    child: Column(children: [
-    //      Text(
-    //        _presskit.originalName,
-    //      ),
-    //      ElevatedButton(
-    //        onPressed: () async {
-    //          await ref
-    //              .read(adminInterfaceViewModelProvider.notifier)
-    //              .deleteAsset(_presskit!.id);
-    //        },
-    //        style: ElevatedButton.styleFrom(
-    //            shape: RoundedRectangleBorder(
-    //              borderRadius: BorderRadius.circular(100),
-    //            ),
-    //            backgroundColor: TwoSidesColors.primaryColor,
-    //            minimumSize: const Size(10, 10)),
-    //        child: Text(
-    //          "X",
-    //          style: const TextStyle(
-    //              fontSize: 18,
-    //              fontFamily: 'signika',
-    //              color: Colors.white,
-    //              fontWeight: FontWeight.bold),
-    //        ),
-    //      ),
-    //    ]),
-    //  );
-    //} else {
-    //  return Padding(
-    //    padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-    //    child: Column(children: [
-    //      GestureDetector(
-    //        onTap: () async {
-    //          FilePickerResult? result = await FilePicker.platform.pickFiles(
-    //            withData: true,
-    //          );
-    //          if (result != null) {
-    //            setState(() => _selectedFile = result.files.first);
-    //          } else {
-    //            // User canceled the picker
-    //          }
-    //        },
-    //        child: Container(
-    //            width: 170,
-    //            height: 100,
-    //            decoration: BoxDecoration(
-    //              border: Border.all(
-    //                width: 2,
-    //              ),
-    //            ),
-    //            child: () {
-    //              if (_selectedFile == null) {
-    //                return Icon(Icons.document_scanner);
-    //              } else if (_selectedFile != null) {
-    //                return Icon(
-    //                  Icons.check_box,
-    //                  color: Colors.lightGreenAccent,
-    //                );
-    //              }
-    //            }()),
-    //      ),
-    //      ElevatedButton(
-    //        onPressed: _selectedFile != null
-    //            ? () async {
-    //                final XFile x_file = XFile.fromData(
-    //                  _selectedFile!.bytes!,
-    //                  name: _selectedFile!.name,
-    //                );
-    //                ref
-    //                    .read(adminInterfaceViewModelProvider.notifier)
-    //                    .uploadAssetArtist(
-    //                        widget.artist.id, x_file, "presskit");
-    //              }
-    //            : null,
-    //        style: ElevatedButton.styleFrom(
-    //            shape: RoundedRectangleBorder(
-    //              borderRadius: BorderRadius.circular(100),
-    //            ),
-    //            backgroundColor: TwoSidesColors.secondaryColor,
-    //            minimumSize: const Size(10, 40)),
-    //        child: Text(
-    //          "Upload",
-    //          style: const TextStyle(
-    //              fontSize: 18,
-    //              fontFamily: 'signika',
-    //              color: Colors.black,
-    //              fontWeight: FontWeight.bold),
-    //        ),
-    //      ),
-    //    ]),
-    //  );
-    //}
+    if (presskit != null) {
+      return Padding(
+        padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
+        child: Column(children: [
+          Text(
+            presskit.originalName,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              await ref
+                  .read(adminInterfaceViewModelProvider.notifier)
+                  .deleteAsset(presskit!.id);
+            },
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                backgroundColor: TwoSidesColors.primaryColor,
+                minimumSize: const Size(10, 10)),
+            child: Text(
+              "X",
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'signika',
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ]),
+      );
+    } else {
+      return Padding(
+        padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
+        child: Column(children: [
+          GestureDetector(
+            onTap: () async {
+              FilePickerResult? result = await FilePicker.platform.pickFiles(
+                withData: true,
+              );
+              if (result != null) {
+                setState(() => _selectedFile = result.files.first);
+              } else {
+                // User canceled the picker
+              }
+            },
+            child: Container(
+                width: 170,
+                height: 100,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                  ),
+                ),
+                child: () {
+                  if (_selectedFile == null) {
+                    return Icon(Icons.document_scanner);
+                  } else if (_selectedFile != null) {
+                    return Icon(
+                      Icons.check_box,
+                      color: Colors.lightGreenAccent,
+                    );
+                  }
+                }()),
+          ),
+          ElevatedButton(
+            onPressed: _selectedFile != null
+                ? () async {
+                    final XFile x_file = XFile.fromData(
+                      _selectedFile!.bytes!,
+                      name: _selectedFile!.name,
+                    );
+                    ref
+                        .read(adminInterfaceViewModelProvider.notifier)
+                        .uploadAssetArtist(
+                            widget.artist.id, x_file, "presskit");
+                  }
+                : null,
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                backgroundColor: TwoSidesColors.secondaryColor,
+                minimumSize: const Size(10, 40)),
+            child: Text(
+              "Upload",
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'signika',
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ]),
+      );
+    }
   }
 }
 
