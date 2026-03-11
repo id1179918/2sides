@@ -15,12 +15,24 @@ import 'package:twosides/pages/admin_interface.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twosides/pages/artist_page.dart';
 import 'package:twosides/widgets/page_headers.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:html' as html;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ProviderScope(child: MyApp()),
   );
+}
+
+bool isMobileBrowser() {
+  if (!kIsWeb) return false;
+
+  final userAgent = html.window.navigator.userAgent.toLowerCase();
+  return userAgent.contains('mobile') ||
+      userAgent.contains('android') ||
+      userAgent.contains('iphone') ||
+      userAgent.contains('ipad');
 }
 
 class MyApp extends StatelessWidget {
@@ -126,54 +138,78 @@ class Acceuil extends StatefulWidget {
 class _MyHomePageState extends State<Acceuil> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        alignment: AlignmentGeometry.topCenter,
-        children: [
-          Image(
-            image: Assets.images.subside2025Ldscarla0745.provider(),
-            fit: BoxFit.fitWidth,
-          ),
-          Image.asset(
-            scale: 3,
-            Assets.images.twosidesgif2.path,
-          ),
-          Container(
-            alignment: Alignment.topCenter,
-            margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-            child: HomePageHeader(),
-          ),
-          //    const Row(
-          //    mainAxisAlignment: MainAxisAlignment.center,
-          //    children: [
-          //      ButtonAcceuil(
-          //        buttonText: "Booking",
-          //        route: RoutingPageNames.booking,
-          //      ),
-          //      ButtonAcceuil(
-          //        buttonText: "Prod Event",
-          //        route: RoutingPageNames.booking,
-          //      ),
-          //      ButtonAcceuil(
-          //        buttonText: "Admin",
-          //        route: RoutingPageNames.booking,
-          //      ),
-          //      ButtonAcceuil(
-          //        buttonText: "About",
-          //        route: RoutingPageNames.about,
-          //      )
-          //    ],
-          //  ),
-          //),
-          //Image(
-          //  width: 100,
-          //  height: 100,
-          //  image: Assets.images.lOGO2sidesEnvent.provider(),
-          //  alignment: Alignment.center,
-          //),
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    final isMobile = isMobileBrowser();
+    return isMobile
+        ? Scaffold(
+            body: Center(
+            child: Column(
+              children: [
+                Image.asset(
+                  scale: 5,
+                  Assets.images.lOGO2sidesEnvent.path,
+                ),
+                Text(
+                  "Désolé, la version mobile n'est pas disponible, veuillez vous rendre sur navigateur PC...",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Boldonse',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    //height: 0.9,
+                  ),
+                ),
+              ],
+            ),
+          ))
+        : Scaffold(
+            body: Stack(
+              fit: StackFit.expand,
+              alignment: AlignmentGeometry.topCenter,
+              children: [
+                Image(
+                  image: Assets.images.subside2025Ldscarla0745.provider(),
+                  fit: BoxFit.fitWidth,
+                ),
+                Image.asset(
+                  scale: 3,
+                  Assets.images.twosidesgif2.path,
+                ),
+                Container(
+                  alignment: Alignment.topCenter,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                  child: HomePageHeader(),
+                ),
+                //    const Row(
+                //    mainAxisAlignment: MainAxisAlignment.center,
+                //    children: [
+                //      ButtonAcceuil(
+                //        buttonText: "Booking",
+                //        route: RoutingPageNames.booking,
+                //      ),
+                //      ButtonAcceuil(
+                //        buttonText: "Prod Event",
+                //        route: RoutingPageNames.booking,
+                //      ),
+                //      ButtonAcceuil(
+                //        buttonText: "Admin",
+                //        route: RoutingPageNames.booking,
+                //      ),
+                //      ButtonAcceuil(
+                //        buttonText: "About",
+                //        route: RoutingPageNames.about,
+                //      )
+                //    ],
+                //  ),
+                //),
+                //Image(
+                //  width: 100,
+                //  height: 100,
+                //  image: Assets.images.lOGO2sidesEnvent.provider(),
+                //  alignment: Alignment.center,
+                //),
+              ],
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+          );
   }
 }
