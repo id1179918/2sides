@@ -28,13 +28,23 @@ class $AssetsImagesGen {
   /// File path: assets/images/PALETTE.png
   AssetGenImage get palette => const AssetGenImage('assets/images/PALETTE.png');
 
+  /// File path: assets/images/bandcamp-logo-svgrepo-com.svg
+  String get bandcampLogoSvgrepoCom =>
+      'assets/images/bandcamp-logo-svgrepo-com.svg';
+
   /// File path: assets/images/bandcamp.png
   AssetGenImage get bandcamp =>
       const AssetGenImage('assets/images/bandcamp.png');
 
+  /// File path: assets/images/facebook-svgrepo-com.svg
+  String get facebookSvgrepoCom => 'assets/images/facebook-svgrepo-com.svg';
+
   /// File path: assets/images/facebook.png
   AssetGenImage get facebook =>
       const AssetGenImage('assets/images/facebook.png');
+
+  /// File path: assets/images/instagram-svgrepo-com.svg
+  String get instagramSvgrepoCom => 'assets/images/instagram-svgrepo-com.svg';
 
   /// File path: assets/images/instagram.png
   AssetGenImage get instagram =>
@@ -43,12 +53,22 @@ class $AssetsImagesGen {
   /// File path: assets/images/merch.png
   AssetGenImage get merch => const AssetGenImage('assets/images/merch.png');
 
+  /// File path: assets/images/mixcloud-svgrepo-com.svg
+  String get mixcloudSvgrepoCom => 'assets/images/mixcloud-svgrepo-com.svg';
+
   /// File path: assets/images/mixcloud.png
   AssetGenImage get mixcloud =>
       const AssetGenImage('assets/images/mixcloud.png');
 
   /// File path: assets/images/ra.png
-  AssetGenImage get ra => const AssetGenImage('assets/images/ra.png');
+  AssetGenImage get raPng => const AssetGenImage('assets/images/ra.png');
+
+  /// File path: assets/images/ra.svg
+  String get raSvg => 'assets/images/ra.svg';
+
+  /// File path: assets/images/soundcloud-round-svgrepo-com.svg
+  String get soundcloudRoundSvgrepoCom =>
+      'assets/images/soundcloud-round-svgrepo-com.svg';
 
   /// File path: assets/images/soundcloud.png
   AssetGenImage get soundcloud =>
@@ -73,31 +93,47 @@ class $AssetsImagesGen {
   AssetGenImage get twosidesgif2 =>
       const AssetGenImage('assets/images/twosidesgif2.gif');
 
+  /// File path: assets/images/website-ui-web-svgrepo-com.svg
+  String get websiteUiWebSvgrepoCom =>
+      'assets/images/website-ui-web-svgrepo-com.svg';
+
   /// File path: assets/images/website.png
   AssetGenImage get website => const AssetGenImage('assets/images/website.png');
+
+  /// File path: assets/images/youtube-round-svgrepo-com.svg
+  String get youtubeRoundSvgrepoCom =>
+      'assets/images/youtube-round-svgrepo-com.svg';
 
   /// File path: assets/images/youtube.png
   AssetGenImage get youtube => const AssetGenImage('assets/images/youtube.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
         logo2sides,
         lOGO2sidesEnvent,
         lOGONb,
         palette,
+        bandcampLogoSvgrepoCom,
         bandcamp,
+        facebookSvgrepoCom,
         facebook,
+        instagramSvgrepoCom,
         instagram,
         merch,
+        mixcloudSvgrepoCom,
         mixcloud,
-        ra,
+        raPng,
+        raSvg,
+        soundcloudRoundSvgrepoCom,
         soundcloud,
         subside2025Ldscarla0745,
         subside2025Ldscarla0950,
         ticket,
         twosidesgif,
         twosidesgif2,
+        websiteUiWebSvgrepoCom,
         website,
+        youtubeRoundSvgrepoCom,
         youtube
       ];
 }
@@ -105,11 +141,7 @@ class $AssetsImagesGen {
 class Assets {
   const Assets._();
 
-  static const String aEnv = '.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
-
-  /// List of all assets
-  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {

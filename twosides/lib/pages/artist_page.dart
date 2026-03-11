@@ -30,25 +30,25 @@ class LinkIconButton extends StatelessWidget {
     Uri _url = Uri.parse(link.url);
 
     if (link.type == LinkType.website) {
-      _image = Assets.images.website.path;
+      _image = Assets.images.websiteUiWebSvgrepoCom;
     } else if (link.type == LinkType.merch) {
-      _image = Assets.images.merch.path;
+      _image = Assets.images.websiteUiWebSvgrepoCom;
     } else if (link.type == LinkType.instagram) {
-      _image = Assets.images.instagram.path;
+      _image = Assets.images.instagramSvgrepoCom;
     } else if (link.type == LinkType.facebook) {
-      _image = Assets.images.facebook.path;
+      _image = Assets.images.facebookSvgrepoCom;
     } else if (link.type == LinkType.youtube) {
-      _image = Assets.images.youtube.path;
+      _image = Assets.images.youtubeRoundSvgrepoCom;
     } else if (link.type == LinkType.soundcloud) {
-      _image = Assets.images.soundcloud.path;
+      _image = Assets.images.soundcloudRoundSvgrepoCom;
     } else if (link.type == LinkType.bandcamp) {
-      _image = Assets.images.bandcamp.path;
+      _image = Assets.images.bandcampLogoSvgrepoCom;
     } else if (link.type == LinkType.mixcloud) {
-      _image = Assets.images.mixcloud.path;
+      _image = Assets.images.mixcloudSvgrepoCom;
     } else if (link.type == LinkType.ticketing) {
-      _image = Assets.images.ticket.path;
+      _image = Assets.images.websiteUiWebSvgrepoCom;
     } else if (link.type == LinkType.ra) {
-      _image = Assets.images.ra.path;
+      _image = Assets.images.raSvg;
     } else if (link.type == LinkType.live || link.type == LinkType.release) {
       return Container();
     }
