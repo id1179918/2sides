@@ -81,6 +81,22 @@ class Asset {
     );
   }
 
+  @override
+  String toString() {
+    return '''
+    Asset {
+      id: $id,
+      role: $role,
+      originalName: $originalName,
+      storageKey: $storageKey,
+      mimeType: $mimeType,
+      sizeBytes: $sizeBytes bytes (${(sizeBytes / 1024).toStringAsFixed(2)} KB),
+      checkSum: ${checkSum ?? 'N/A'},
+      fileExtension: ${fileExtension ?? 'N/A'},
+      createdAt: $createdAt,
+    }''';
+  }
+
   final AssetRole role;
   final int id;
   final String originalName;
@@ -90,4 +106,11 @@ class Asset {
   final String? checkSum;
   final String? fileExtension;
   final DateTime createdAt;
+}
+
+extension AssetListExtension on List<Asset> {
+  String toFormattedString() {
+    if (isEmpty) return 'Assets: []';
+    return 'Assets (${length} items):\n${asMap().entries.map((e) => '[${e.key}] ${e.value}').join('\n')}';
+  }
 }

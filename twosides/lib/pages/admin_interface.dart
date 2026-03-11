@@ -40,7 +40,7 @@ class _AddPressKitState extends ConsumerState<AddPressKit> {
 
     print("hasPresskit: " + hasPresskit.toString());
     print("_presskit: " + _presskit.toString());
-    print("assets" + widget.artist.assets!.toString());
+    print("assets" + widget.artist.assets!.toFormattedString());
 
     return Text(_presskit.toString());
 
