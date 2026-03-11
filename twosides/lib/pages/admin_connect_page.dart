@@ -8,18 +8,19 @@ import 'package:twosides/constants/colors.dart';
 import 'package:twosides/constants/routes.dart';
 import 'package:twosides/gen/assets.gen.dart';
 import 'package:twosides/widgets/page_headers.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 
 class AdminConnectPage extends ConsumerWidget {
   AdminConnectPage({super.key});
 
-  final TextEditingController _emailController = TextEditingController(text: "Email");
-  final TextEditingController _passwordController = TextEditingController(text: "Mot de passe");
+  final TextEditingController _emailController =
+      TextEditingController(text: "Email");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "Mot de passe");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final adminConnectPageViewState = ref.watch(adminConnectPageViewModelProvider);
+    final adminConnectPageViewState =
+        ref.watch(adminConnectPageViewModelProvider);
 
     ref.listen<AdminConnectPageViewState>(
       adminConnectPageViewModelProvider,
@@ -29,7 +30,8 @@ class AdminConnectPage extends ConsumerWidget {
           data: (admin) {
             if (admin != null && admin.status == "success") {
               log(admin.status);
-              Navigator.pushNamed(context, '${RoutingPageNames.adminInterface}');
+              Navigator.pushNamed(
+                  context, '${RoutingPageNames.adminInterface}');
             }
           },
           error: (error, _) {
@@ -40,68 +42,65 @@ class AdminConnectPage extends ConsumerWidget {
     );
 
     return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, MediaQuery.of(context).size.height * 0.1),
-                child: Image.asset(
-                  scale: 3,
-                  Assets.images.lOGO2sidesEnvent.path,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.17,
-                  child: TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.17,
-                  child: TextFormField(
-                    controller: _passwordController,
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    obscureText: true,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: adminConnectPageViewState.admin is AsyncLoading
-                    ? null
-                    : () async {
-                        ref
-                            .read(adminConnectPageViewModelProvider.notifier)
-                            .login(_emailController.text,
-                                _passwordController.text);
-                      },
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    backgroundColor: TwoSidesColors.primaryColor,
-                    minimumSize: const Size(10, 60)),
-                child: Text(
-                  "Se connecter",
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'signika',
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ]
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, 0, MediaQuery.of(context).size.height * 0.1),
+            child: Image.asset(
+              scale: 3,
+              Assets.images.lOGO2sidesEnvent.path,
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.17,
+              child: TextFormField(
+                controller: _emailController,
+                decoration: const InputDecoration(border: OutlineInputBorder()),
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.17,
+              child: TextFormField(
+                controller: _passwordController,
+                decoration: const InputDecoration(border: OutlineInputBorder()),
+                obscureText: true,
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: adminConnectPageViewState.admin is AsyncLoading
+                ? null
+                : () async {
+                    ref
+                        .read(adminConnectPageViewModelProvider.notifier)
+                        .login(_emailController.text, _passwordController.text);
+                  },
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                backgroundColor: TwoSidesColors.primaryColor,
+                minimumSize: const Size(10, 60)),
+            child: Text(
+              "Se connecter",
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'signika',
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }

@@ -12,15 +12,14 @@ import 'package:twosides/constants/colors.dart';
 import 'package:twosides/gen/assets.gen.dart';
 import 'package:twosides/widgets/page_headers.dart';
 import 'package:twosides/widgets/page_footer.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/constants/routes.dart';
 import 'package:twosides/asset_image_cache.dart';
 
-final String imageUrl = dotenv.env['IMAGE_URL'] ?? 'http://localhost:3000';
+import '../constants/env.dart';
 
+final String imageUrl = Env.imageUrl;
 
 class BlurImageOnLoad extends StatefulWidget {
-
   const BlurImageOnLoad({super.key});
 
   @override
@@ -45,9 +44,9 @@ class _BlurImageOnLoadState extends State<BlurImageOnLoad> {
               child: Container(color: Colors.transparent),
             ),
           ),
-          Image.asset(
-            scale: 3,
-            Assets.images.lOGO2sidesEnvent.path,
+        Image.asset(
+          scale: 3,
+          Assets.images.lOGO2sidesEnvent.path,
           frameBuilder: (_, child, frame, __) {
             if (frame != null) {
               Future.microtask(() => setState(() => _loaded = true));
@@ -63,7 +62,6 @@ class _BlurImageOnLoadState extends State<BlurImageOnLoad> {
     );
   }
 }
-
 
 class ArtistTile extends StatefulWidget {
   ArtistTile({super.key, required this.artist});
@@ -159,11 +157,14 @@ class _ArtistTileState extends State<ArtistTile> {
 
   @override
   Widget build(BuildContext context) {
-    _hoverColor = widget.artist.style == "Dub" ? TwoSidesColors.primaryColor.withOpacity(0.3) : TwoSidesColors.secondaryColor.withOpacity(0.7);
+    _hoverColor = widget.artist.style == "Dub"
+        ? TwoSidesColors.primaryColor.withOpacity(0.3)
+        : TwoSidesColors.secondaryColor.withOpacity(0.7);
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '${RoutingPageNames.artist}/${widget.artist.id}');
+        Navigator.pushNamed(
+            context, '${RoutingPageNames.artist}/${widget.artist.id}');
       },
       child: MouseRegion(
         onEnter: (_) => setState(() => _isHovered = true),
@@ -223,9 +224,8 @@ class BookingPage extends ConsumerWidget {
 
     return bookingPageViewState.artists.when(
       data: (_) {
-       return Scaffold(
-        body:
-          CustomScrollView(
+        return Scaffold(
+          body: CustomScrollView(
             slivers: <Widget>[
               SliverToBoxAdapter(
                 child: BookingPageHeader(),
@@ -237,11 +237,11 @@ class BookingPage extends ConsumerWidget {
                     crossAxisCount: 4,
                   ),
                   delegate: SliverChildBuilderDelegate(
-                    childCount: bookingPageViewState.artists.value!.length,
-                    (context, index) {
-                      return ArtistTile(artist: bookingPageViewState.artists.value![index]);
-                    }
-                  ),
+                      childCount: bookingPageViewState.artists.value!.length,
+                      (context, index) {
+                    return ArtistTile(
+                        artist: bookingPageViewState.artists.value![index]);
+                  }),
                 ),
               ),
               SliverToBoxAdapter(
@@ -253,11 +253,7 @@ class BookingPage extends ConsumerWidget {
       },
       error: (error, stacktrace) {
         return Column(
-          children: [
-            Text(error.toString()),
-            Text(stacktrace.toString())
-          ]
-        );
+            children: [Text(error.toString()), Text(stacktrace.toString())]);
       },
       loading: () => Container(
         width: MediaQuery.of(context).size.width,
@@ -270,4 +266,3 @@ class BookingPage extends ConsumerWidget {
     );
   }
 }
-

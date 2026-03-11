@@ -4,7 +4,6 @@ import 'package:twosides/constants/env.dart';
 import 'dart:developer';
 import 'package:twosides/http/repositories/admin_repository.dart';
 import 'package:twosides/http/two_sides_http.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/models/auth.dart';
 import 'package:twosides/constants/routes.dart';
 

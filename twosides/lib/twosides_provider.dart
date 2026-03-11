@@ -13,7 +13,6 @@ import 'package:twosides/http/repositories/link_repository.dart';
 import 'package:twosides/http/repositories/link_repository_impl.dart';
 import 'package:twosides/http/two_sides_http.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/browser_client.dart';
 
 final artistRepositoryProvider = Provider<ArtistRepository>((ref) {

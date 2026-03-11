@@ -7,7 +7,6 @@ import 'package:twosides/pages/booking_page_state_model.dart';
 import 'package:twosides/constants/colors.dart';
 import 'package:twosides/constants/routes.dart';
 import 'package:twosides/gen/assets.gen.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
 

@@ -6,7 +6,6 @@ import 'dart:io';
 import 'package:twosides/models/artist.dart';
 import 'package:twosides/http/repositories/link_repository.dart';
 import 'package:twosides/http/two_sides_http.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/models/asset.dart';
 import 'package:twosides/models/link.dart';
 import 'package:twosides/models/auth.dart';

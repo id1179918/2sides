@@ -13,17 +13,11 @@ import 'package:twosides/pages/protected_page.dart';
 import 'package:twosides/pages/admin_connect_page.dart';
 import 'package:twosides/pages/admin_interface.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/pages/artist_page.dart';
 import 'package:twosides/widgets/page_headers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    throw Exception('Error loading .env file: $e');
-  }
   runApp(
     ProviderScope(child: MyApp()),
   );

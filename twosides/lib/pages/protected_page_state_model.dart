@@ -1,13 +1,11 @@
 import 'dart:developer';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twosides/twosides_provider.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:twosides/models/auth.dart';
 import 'package:twosides/http/repositories/admin_repository.dart';
 
-final protectedPageViewModelProvider =
-    StateNotifierProvider.autoDispose<ProtectedPageViewModel, ProtectedPageViewState>(
-        (ref) {
+final protectedPageViewModelProvider = StateNotifierProvider.autoDispose<
+    ProtectedPageViewModel, ProtectedPageViewState>((ref) {
   return ProtectedPageViewModel(ref.watch(adminRepositoryProvider));
 });
 
@@ -16,8 +14,8 @@ class ProtectedPageViewModel extends StateNotifier<ProtectedPageViewState> {
 
   ProtectedPageViewModel(this._adminRepository)
       : super(ProtectedPageViewState(const AsyncData(null))) {
-        checkAdmin();
-      }
+    checkAdmin();
+  }
 
   Future<void> checkAdmin() async {
     state = ProtectedPageViewState(const AsyncLoading());

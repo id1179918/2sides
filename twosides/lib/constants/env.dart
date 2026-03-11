@@ -3,4 +3,9 @@ class Env {
     'BASE_URL',
     defaultValue: 'http://localhost:3000/api',
   );
+
+  static const imageUrl = String.fromEnvironment(
+    'IMAGE_URL',
+    defaultValue: 'http://localhost:3000/api',
+  );
 }

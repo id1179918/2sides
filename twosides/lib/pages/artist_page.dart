@@ -13,11 +13,12 @@ import 'package:twosides/gen/assets.gen.dart';
 import 'package:twosides/widgets/page_headers.dart';
 import 'package:twosides/widgets/page_footer.dart';
 import 'package:twosides/widgets/horizontal_carousel.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
-final String imageUrl = dotenv.env['IMAGE_URL'] ?? 'http://localhost:3000';
+import '../constants/env.dart';
+
+final String imageUrl = Env.imageUrl;
 
 class LinkIconButton extends StatelessWidget {
   const LinkIconButton({super.key, required this.link});
