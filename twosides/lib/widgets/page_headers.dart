@@ -196,14 +196,14 @@ class AboutPageHeader extends ConsumerWidget {
             padding: EdgeInsets.fromLTRB(
                 0, 0, MediaQuery.of(context).size.width * 0.05, 0),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IntrinsicWidth(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AnimatedUnderlineButton(
+                        AnimatedUnderlineButtonSmall(
                             text: "BOOKING", route: RoutingPageNames.booking),
                       ],
                     ),
@@ -213,7 +213,7 @@ class AboutPageHeader extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AnimatedUnderlineButton(
+                        AnimatedUnderlineButtonSmall(
                             text: "PROD EVENT",
                             route: RoutingPageNames.booking),
                       ],
@@ -224,7 +224,7 @@ class AboutPageHeader extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AnimatedUnderlineButton(
+                        AnimatedUnderlineButtonSmall(
                             text: "ADMIN", route: RoutingPageNames.booking),
                       ],
                     ),
@@ -234,7 +234,7 @@ class AboutPageHeader extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        AnimatedUnderlineButton(
+                        AnimatedUnderlineButtonSmall(
                             text: "ABOUT", route: RoutingPageNames.about),
                       ],
                     ),
@@ -278,7 +278,7 @@ class _AnimatedUnderlineButtonSmallState
             child: Text(
               widget.text,
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontFamily: 'Boldonse',
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
