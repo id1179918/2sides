@@ -1,14 +1,13 @@
 class Event {
-  Event({
-    required this.name,
-    required this.location,
-    required this.style,
-    required this.description,
-    required this.price,
-    required this.date,
-    required this.isSoldOut,
-    required this.id
-  });
+  Event(
+      {required this.name,
+      required this.location,
+      required this.style,
+      required this.description,
+      required this.price,
+      required this.date,
+      required this.isSoldOut,
+      required this.id});
 
   factory Event.fromJson(Map<String, Object?> json) {
     return Event(
@@ -17,7 +16,7 @@ class Event {
       style: json['style']! as String,
       description: json['description']! as String,
       price: json['price']! as int,
-      date: json['date']! as Date,
+      date: json['date']! as DateTime,
       isSoldOut: json['isSoldOut']! as bool,
       id: json['id']! as int,
     );
@@ -28,7 +27,7 @@ class Event {
   final String style;
   final String description;
   final int price;
-  final Date date;
+  final DateTime date;
   final bool isSoldOut;
   final int id;
 }
