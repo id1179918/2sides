@@ -58,12 +58,14 @@ class LinkIconButton extends StatelessWidget {
         height: 40,
         width: 40,
         child: GestureDetector(
-          onTap: () async {goToUrl(_url);},
+          onTap: () async {
+            goToUrl(_url);
+          },
           child: Image.asset(
             _image,
           ),
         ),
-        ),
+      ),
     );
   }
 }
@@ -117,7 +119,8 @@ class _ArtistPictureState extends State<ArtistPicture> {
         width: MediaQuery.of(context).size.width,
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
-          return const Center(child: CircularProgressIndicator(
+          return const Center(
+              child: CircularProgressIndicator(
             color: TwoSidesColors.primaryColor,
           ));
         },
@@ -141,62 +144,55 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.06,
-      child: Row(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.06,
-            width:  MediaQuery.of(context).size.width / 3,
-            child: LinkIcons(links: widget.artist.links!),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
-              ),
+      child: Row(children: [
+        Container(
+          height: MediaQuery.of(context).size.height * 0.06,
+          width: MediaQuery.of(context).size.width / 3,
+          child: LinkIcons(links: widget.artist.links!),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.06,
-            width:  MediaQuery.of(context).size.width / 3,
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(width: 1, color: TwoSidesColors.textColor),
-                right: BorderSide(width: 1, color: TwoSidesColors.textColor),
-                bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
-              ),
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.06,
+          width: MediaQuery.of(context).size.width / 3,
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(width: 1, color: TwoSidesColors.textColor),
+              right: BorderSide(width: 1, color: TwoSidesColors.textColor),
+              bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
             ),
-            child: Center(
-              child: GestureDetector(
-                child: Text(
-                  "Booker l'artist"
-                ),
+          ),
+          child: Center(
+            child: GestureDetector(
+                child: Text("Booker l'artiste"),
                 onTap: () async {
-                  final emailUri = Uri.parse('mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
+                  final emailUri = Uri.parse(
+                      'mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
                   await launchUrl(emailUri);
-                }
-              ),
-            ),
+                }),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.06,
-            width:  MediaQuery.of(context).size.width / 3,
-            child: Center(
-              child: GestureDetector(
-                child: Text(
-                  "PressKit - ${widget.artist.name}"
-                ),
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.06,
+          width: MediaQuery.of(context).size.width / 3,
+          child: Center(
+            child: GestureDetector(
+                child: Text("PressKit - ${widget.artist.name}"),
                 onTap: () async {
                   //final emailUri = Uri.parse('mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
                   //await launchUrl(emailUri);
-                }
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
-              ),
+                }),
+          ),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
             ),
           ),
-        ]
-      ),
+        ),
+      ]),
     );
   }
 }
@@ -216,60 +212,57 @@ class _ArtistBioSectionState extends State<ArtistBioSection> {
     return Padding(
       padding: EdgeInsets.all(20),
       child: Column(
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width / 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const Text(
-                  "BIO",
-                  style: TextStyle(
-                    color: TwoSidesColors.primaryColor,
-                    fontFamily: 'Boldonse',
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    //height: 0.9,
-                  ),
-                ),
-                Text(
-                  widget.artist.location!,
-                  style: TextStyle(
-                    color: TwoSidesColors.primaryColor,
-                    fontFamily: 'Boldonse',
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    //height: 0.9,
-                  ),
-                ),
-              ]
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0,20,0,0),
-            child: SizedBox(
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
               width: MediaQuery.of(context).size.width / 2,
-              child: Text(
-                widget.artist.description!,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: TwoSidesColors.textColor,
-                  fontFamily: 'Prophet',
-                  fontSize: 17,
-                  //fontWeight: FontWeight.bold,
-                  //height: 0.9,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "BIO",
+                      style: TextStyle(
+                        color: TwoSidesColors.primaryColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        //height: 0.9,
+                      ),
+                    ),
+                    Text(
+                      widget.artist.location!,
+                      style: TextStyle(
+                        color: TwoSidesColors.primaryColor,
+                        fontFamily: 'Boldonse',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        //height: 0.9,
+                      ),
+                    ),
+                  ]),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: Text(
+                  widget.artist.description!,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: TwoSidesColors.textColor,
+                    fontFamily: 'Prophet',
+                    fontSize: 17,
+                    //fontWeight: FontWeight.bold,
+                    //height: 0.9,
+                  ),
                 ),
               ),
             ),
-          ),
-        ]
-      ),
+          ]),
     );
   }
 }
-
 
 class ArtistLiveSection extends StatefulWidget {
   const ArtistLiveSection({super.key, required this.artist});
@@ -280,7 +273,6 @@ class ArtistLiveSection extends StatefulWidget {
 }
 
 class _ArtistLiveSectionState extends State<ArtistLiveSection> {
-
   @override
   Widget build(BuildContext context) {
     final List<CarouselItem> items = [];
@@ -292,58 +284,55 @@ class _ArtistLiveSectionState extends State<ArtistLiveSection> {
           number_live++;
         }
       });
-      return Column(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width / 2,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "LIVE / PODCAST",
-                style: TextStyle(
-                  color: TwoSidesColors.primaryColor,
-                  fontFamily: 'Boldonse',
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  //height: 0.9,
-                ),
+      return Column(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 2,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              "LIVE / PODCAST",
+              style: TextStyle(
+                color: TwoSidesColors.primaryColor,
+                fontFamily: 'Boldonse',
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                //height: 0.9,
               ),
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.width * 0.20,
-            width: MediaQuery.of(context).size.width,
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  alignment: Alignment.center,
-                  child: HorizontalCarousel(items: items, itemWidth: MediaQuery.of(context).size.width * 0.25),
-                ),
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: Container(
-                    color: TwoSidesColors.backgroundColor,
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: Container(
-                    color: TwoSidesColors.backgroundColor,
-                  ),
-                ),
-              ]
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.width * 0.20,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(alignment: AlignmentDirectional.center, children: [
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              alignment: Alignment.center,
+              child: HorizontalCarousel(
+                  items: items,
+                  itemWidth: MediaQuery.of(context).size.width * 0.25),
             ),
-          )
-        ]
-      );
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: MediaQuery.of(context).size.width / 4,
+              child: Container(
+                color: TwoSidesColors.backgroundColor,
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: MediaQuery.of(context).size.width / 4,
+              child: Container(
+                color: TwoSidesColors.backgroundColor,
+              ),
+            ),
+          ]),
+        )
+      ]);
     } else {
       return Container();
     }
@@ -359,7 +348,6 @@ class ArtistReleaseSection extends StatefulWidget {
 }
 
 class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
-
   @override
   Widget build(BuildContext context) {
     final List<CarouselItem> items = [];
@@ -371,58 +359,55 @@ class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
           number_release++;
         }
       });
-      return Column(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "RELEASE",
-                    style: TextStyle(
-                      color: TwoSidesColors.primaryColor,
-                      fontFamily: 'Boldonse',
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      //height: 0.9,
-                    ),
-                  ),
-                ),
+      return Column(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 2,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "RELEASE",
+              style: TextStyle(
+                color: TwoSidesColors.primaryColor,
+                fontFamily: 'Boldonse',
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                //height: 0.9,
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.20,
-                width: MediaQuery.of(context).size.width,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      alignment: Alignment.center,
-                      child: HorizontalCarousel(items: items, itemWidth: MediaQuery.of(context).size.width * 0.25),
-                    ),
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      bottom: 0,
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: Container(
-                        color: TwoSidesColors.backgroundColor,
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: Container(
-                        color: TwoSidesColors.backgroundColor,
-                      ),
-                    ),
-                  ]
-                ),
-              )
-            ]
-          );
+            ),
+          ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.width * 0.20,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(alignment: AlignmentDirectional.center, children: [
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              alignment: Alignment.center,
+              child: HorizontalCarousel(
+                  items: items,
+                  itemWidth: MediaQuery.of(context).size.width * 0.25),
+            ),
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: MediaQuery.of(context).size.width / 4,
+              child: Container(
+                color: TwoSidesColors.backgroundColor,
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: MediaQuery.of(context).size.width / 4,
+              child: Container(
+                color: TwoSidesColors.backgroundColor,
+              ),
+            ),
+          ]),
+        )
+      ]);
     } else {
       return Container();
     }
@@ -442,15 +427,17 @@ class _ArtistNameButtonState extends State<ArtistNameButton> {
   bool _isHovered = false;
   Color _hoverColor = Colors.transparent;
 
-
   @override
   Widget build(BuildContext context) {
     if (widget.artist != null) {
-      _hoverColor = widget.artist!.style == "Dub" ? TwoSidesColors.primaryColor : TwoSidesColors.secondaryColor;
+      _hoverColor = widget.artist!.style == "Dub"
+          ? TwoSidesColors.primaryColor
+          : TwoSidesColors.secondaryColor;
       return Center(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '${RoutingPageNames.artist}/${widget.artist!.id}');
+            Navigator.pushNamed(
+                context, '${RoutingPageNames.artist}/${widget.artist!.id}');
           },
           child: MouseRegion(
             onEnter: (_) => setState(() => _isHovered = true),
@@ -458,7 +445,7 @@ class _ArtistNameButtonState extends State<ArtistNameButton> {
             child: AnimatedOpacity(
               opacity: _isHovered ? 1.0 : 1.0,
               duration: const Duration(milliseconds: 200),
-              child:Text(
+              child: Text(
                 widget.artist!.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -484,7 +471,7 @@ class _ArtistNameButtonState extends State<ArtistNameButton> {
             child: AnimatedOpacity(
               opacity: _isHovered ? 1.0 : 1.0,
               duration: const Duration(milliseconds: 200),
-              child:Text(
+              child: Text(
                 "All",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -515,24 +502,24 @@ class ArtistsListSection extends ConsumerWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(0,50,0,0),
+      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: Wrap(
-        spacing: 8,        // horizontal spacing
-        runSpacing: 16,     // vertical spacing
-        children: [
-          SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6 / 6 - 8,
-              child: ArtistNameButton(),
-          ),
-          for (final artist in artists)
+          spacing: 8, // horizontal spacing
+          runSpacing: 16, // vertical spacing
+          children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.6 / 6 - 8,
-              child: ArtistNameButton(artist: artist),
+              child: ArtistNameButton(),
             ),
-        ],
-      ),
+            for (final artist in artists)
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.6 / 6 - 8,
+                child: ArtistNameButton(artist: artist),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -553,19 +540,20 @@ class _ArtistBodyState extends State<ArtistBody> {
   @override
   Widget build(BuildContext context) {
     if (widget.artist.assets != null) {
-      int assetIndexId = widget.artist.assets!.indexWhere((asset) => asset.role == AssetRole.primary);
+      int assetIndexId = widget.artist.assets!
+          .indexWhere((asset) => asset.role == AssetRole.primary);
       _assetId = widget.artist.assets![assetIndexId].id.toString();
     }
 
     return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ArtistPicture(assetId: _assetId),
-          ArtistGridInfo(artist: widget.artist),
-          ArtistBioSection(artist: widget.artist),
-          ArtistLiveSection(artist: widget.artist),
-          ArtistReleaseSection(artist: widget.artist),
-        ],
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        ArtistPicture(assetId: _assetId),
+        ArtistGridInfo(artist: widget.artist),
+        ArtistBioSection(artist: widget.artist),
+        ArtistLiveSection(artist: widget.artist),
+        ArtistReleaseSection(artist: widget.artist),
+      ],
     );
   }
 }
@@ -576,70 +564,46 @@ class ArtistPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final artistPageViewState = ref.watch(artistPageViewModelProvider(artistId));
+    final artistPageViewState =
+        ref.watch(artistPageViewModelProvider(artistId));
 
     return Scaffold(
-      backgroundColor: TwoSidesColors.backgroundColor,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              //Container(
-              //  height: MediaQuery.of(context).size.height * 0.1,
-              //),
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: artistPageViewState.artist.when(
-                  data: (_) => artistPageViewState.artists.when(
-                    data: (_) => LayoutBuilder(
-                      builder: (BuildContext context, BoxConstraints viewportConstraints) {
-                        return SingleChildScrollView(
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(minHeight: viewportConstraints.maxHeight),
-                            child: Builder(
-                              builder: (context) {
-                                return Column(
-                                  children: [
-                                    ArtistBody(artist: artistPageViewState.artist.value!),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 100, 0, 80),
-                                      child: ArtistsListSection(artists: artistPageViewState.artists.value!),
-                                    ),
-                                    PageFooter(),
-                                  ]
-                                );
-                              }
-                            )
-                          ),
-                        );
-                      }
-                    ),
-                    error: (error, stacktrace) {
-                      return Column(
-                        children: [
-                          Text(error.toString()),
-                          Text(stacktrace.toString())
-                        ]
-                      );
-                    },
-                    loading: () => Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      color: TwoSidesColors.backgroundColor,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: TwoSidesColors.primaryColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                  error: (error, stacktrace) {
-                    return Column(
-                      children: [
-                        Text(error.toString()),
-                        Text(stacktrace.toString())
-                      ]
+        backgroundColor: TwoSidesColors.backgroundColor,
+        body: Stack(children: [
+          Column(children: [
+            //Container(
+            //  height: MediaQuery.of(context).size.height * 0.1,
+            //),
+            SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: artistPageViewState.artist.when(
+                data: (_) => artistPageViewState.artists.when(
+                  data: (_) => LayoutBuilder(builder: (BuildContext context,
+                      BoxConstraints viewportConstraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                              minHeight: viewportConstraints.maxHeight),
+                          child: Builder(builder: (context) {
+                            return Column(children: [
+                              ArtistBody(
+                                  artist: artistPageViewState.artist.value!),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(0, 100, 0, 80),
+                                child: ArtistsListSection(
+                                    artists:
+                                        artistPageViewState.artists.value!),
+                              ),
+                              PageFooter(),
+                            ]);
+                          })),
                     );
+                  }),
+                  error: (error, stacktrace) {
+                    return Column(children: [
+                      Text(error.toString()),
+                      Text(stacktrace.toString())
+                    ]);
                   },
                   loading: () => Container(
                     width: MediaQuery.of(context).size.width,
@@ -652,13 +616,26 @@ class ArtistPage extends ConsumerWidget {
                     ),
                   ),
                 ),
+                error: (error, stacktrace) {
+                  return Column(children: [
+                    Text(error.toString()),
+                    Text(stacktrace.toString())
+                  ]);
+                },
+                loading: () => Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: TwoSidesColors.backgroundColor,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: TwoSidesColors.primaryColor,
+                    ),
+                  ),
+                ),
               ),
-            ]
-          ),
+            ),
+          ]),
           ArtistPageHeader(),
-        ]
-      )
-    );
+        ]));
   }
 }
-
