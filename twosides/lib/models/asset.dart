@@ -1,12 +1,6 @@
 import 'dart:developer';
 
-enum AssetRole {
-  primary,
-  secondary,
-  background,
-  gallery,
-  banner,
-}
+enum AssetRole { primary, secondary, background, gallery, banner, presskit }
 
 AssetRole stringToAssetRole(String role) {
   AssetRole r = AssetRole.gallery;
@@ -25,6 +19,9 @@ AssetRole stringToAssetRole(String role) {
       break;
     case "banner":
       r = AssetRole.banner;
+      break;
+    case "presskit":
+      r = AssetRole.presskit;
       break;
   }
   return r;
@@ -47,6 +44,9 @@ String assetRoleToString(AssetRole role) {
       break;
     case AssetRole.banner:
       s = "banner";
+      break;
+    case AssetRole.presskit:
+      s = "presskit";
       break;
   }
   return s;
@@ -74,7 +74,9 @@ class Asset {
       mimeType: json['mime_type']! as String,
       sizeBytes: int.parse(json['size_bytes']! as String),
       checkSum: json['check_sum'] == null ? "" : json['check_sum'] as String,
-      fileExtension: json['file_extension'] == null ? "" : json['file_extension'] as String,
+      fileExtension: json['file_extension'] == null
+          ? ""
+          : json['file_extension'] as String,
       createdAt: DateTime.parse(json['created_at']! as String),
     );
   }

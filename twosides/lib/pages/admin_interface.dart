@@ -18,6 +18,84 @@ import 'package:cross_file/cross_file.dart';
 
 final String imageUrl = Env.imageUrl;
 
+class AddPressKit extends ConsumerStatefulWidget {
+  AddPressKit({super.key, required this.artist});
+  final Artist artist;
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _AddPressKitState();
+}
+
+class _AddPressKitState extends ConsumerState<AddPressKit> {
+  PlatformFile? _selectedFile;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
+      child: Column(children: [
+        GestureDetector(
+          onTap: () async {
+            FilePickerResult? result = await FilePicker.platform.pickFiles(
+              withData: true,
+            );
+            if (result != null) {
+              setState(() => _selectedFile = result.files.first);
+            } else {
+              // User canceled the picker
+            }
+          },
+          child: Container(
+              width: 170,
+              height: 100,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                ),
+              ),
+              child: () {
+                if (_selectedFile == null) {
+                  return Icon(Icons.document_scanner);
+                } else if (_selectedFile != null) {
+                  return Icon(
+                    Icons.check_box,
+                    color: Colors.lightGreenAccent,
+                  );
+                }
+              }()),
+        ),
+        ElevatedButton(
+          onPressed: _selectedFile != null
+              ? () async {
+                  final XFile x_file = XFile.fromData(
+                    _selectedFile!.bytes!,
+                    name: _selectedFile!.name,
+                  );
+                  ref
+                      .read(adminInterfaceViewModelProvider.notifier)
+                      .uploadAssetArtist(widget.artist.id, x_file, "presskit");
+                }
+              : null,
+          style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+              backgroundColor: TwoSidesColors.secondaryColor,
+              minimumSize: const Size(10, 40)),
+          child: Text(
+            "Upload",
+            style: const TextStyle(
+                fontSize: 18,
+                fontFamily: 'signika',
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
 class AddPictureBox extends ConsumerStatefulWidget {
   AddPictureBox({super.key, required this.artist});
   final Artist artist;
