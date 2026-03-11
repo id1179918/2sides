@@ -771,9 +771,10 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
             height: 300,
             child: ListView(scrollDirection: Axis.horizontal, children: [
               for (final (index, asset) in widget.artist.assets!.indexed)
-                PictureBox(
-                    asset: asset,
-                    roleController: _pictureRoleControllers[index]),
+                if (asset.role != AssetRole.presskit)
+                  PictureBox(
+                      asset: asset,
+                      roleController: _pictureRoleControllers[index]),
               AddPictureBox(artist: widget.artist),
             ]),
           ),
