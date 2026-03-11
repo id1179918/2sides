@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:twosides/constants/colors.dart';
 import 'package:twosides/constants/routes.dart';
 import 'package:twosides/gen/assets.gen.dart';
+import 'package:twosides/pages/admin_orga_page.dart';
 import 'package:twosides/pages/booking_page.dart';
 import 'package:twosides/pages/about_page.dart';
 import 'package:twosides/pages/error_page.dart';
+import 'package:twosides/pages/prod_event_page.dart';
 import 'package:twosides/pages/protected_page.dart';
 import 'package:twosides/pages/admin_connect_page.dart';
 import 'package:twosides/pages/admin_interface.dart';
@@ -36,9 +38,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         RoutingPageNames.booking: (context) => BookingPage(),
+        RoutingPageNames.prod: (context) => ProdEventPage(),
+        RoutingPageNames.admin: (context) => AdminOrgPage(),
         RoutingPageNames.about: (context) => AboutPage(),
         RoutingPageNames.adminConnect: (context) => AdminConnectPage(),
-        RoutingPageNames.adminInterface: (context) => ProtectedPage(child: AdminInterfacePage()),
+        RoutingPageNames.adminInterface: (context) =>
+            ProtectedPage(child: AdminInterfacePage()),
       },
       onGenerateRoute: (settings) {
         final uri = Uri.parse(settings.name!);

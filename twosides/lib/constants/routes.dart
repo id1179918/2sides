@@ -5,6 +5,8 @@ final String httpsHead = "https://";
 class RoutingPageNames {
   static const String booking = "/booking";
   static const String about = "/about";
+  static const String prod = "/prod";
+  static const String admin = "/adm";
   static const String adminConnect = "/admin";
   static const String adminInterface = "/admin/interface";
   static const String artist = "/artist";

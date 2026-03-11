@@ -41,7 +41,7 @@ class _MenuDropDownState extends State<MenuDropDown> {
     ;
 
     return PopupMenuButton<SampleItem>(
-      icon: Icon(Icons.menu, size: 50),
+      icon: const Icon(Icons.menu, size: 50),
       initialValue: _dropdownvalue,
       onSelected: (SampleItem item) {
         setState(() {
@@ -61,7 +61,7 @@ class _MenuDropDownState extends State<MenuDropDown> {
 }
 
 class BookingPageHeader extends ConsumerWidget {
-  BookingPageHeader({super.key});
+  const BookingPageHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -71,13 +71,13 @@ class BookingPageHeader extends ConsumerWidget {
       child: Row(children: [
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.3,
-          child: Column(
+          child: const Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "BOOKING",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Prophet',
                     fontSize: 100,
@@ -89,7 +89,7 @@ class BookingPageHeader extends ConsumerWidget {
                     padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(
                       "2sidesbooking@gmail.com",
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'NeueMetanaNext',
                         fontSize: 20,
@@ -100,7 +100,7 @@ class BookingPageHeader extends ConsumerWidget {
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.7,
-          child: Center(
+          child: const Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -120,7 +120,7 @@ class BookingPageHeader extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedUnderlineButtonSmallBlack(
-                          text: "PROD EVENT", route: RoutingPageNames.booking),
+                          text: "PROD EVENT", route: RoutingPageNames.prod),
                     ],
                   ),
                 ),
@@ -130,7 +130,7 @@ class BookingPageHeader extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedUnderlineButtonSmallBlack(
-                          text: "ADMIN", route: RoutingPageNames.booking),
+                          text: "ADMIN", route: RoutingPageNames.admin),
                     ],
                   ),
                 ),
@@ -154,7 +154,7 @@ class BookingPageHeader extends ConsumerWidget {
 }
 
 class AboutPageHeader extends ConsumerWidget {
-  AboutPageHeader({super.key});
+  const AboutPageHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -163,11 +163,11 @@ class AboutPageHeader extends ConsumerWidget {
       child: Row(children: [
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.3,
-          child: Padding(
+          child: const Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Text(
               "ABOUT",
-              style: const TextStyle(
+              style: TextStyle(
                 color: TwoSidesColors.textColor,
                 fontFamily: 'Prophet',
                 fontSize: 110,
@@ -182,7 +182,7 @@ class AboutPageHeader extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.fromLTRB(
                 0, 0, MediaQuery.of(context).size.width * 0.05, 0),
-            child: Row(
+            child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IntrinsicWidth(
@@ -201,8 +201,7 @@ class AboutPageHeader extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         AnimatedUnderlineButtonSmall(
-                            text: "PROD EVENT",
-                            route: RoutingPageNames.booking),
+                            text: "PROD EVENT", route: RoutingPageNames.prod),
                       ],
                     ),
                   ),
@@ -212,7 +211,167 @@ class AboutPageHeader extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         AnimatedUnderlineButtonSmall(
-                            text: "ADMIN", route: RoutingPageNames.booking),
+                            text: "ADMIN", route: RoutingPageNames.admin),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "ABOUT", route: RoutingPageNames.about),
+                      ],
+                    ),
+                  ),
+                ]),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+class ProdEventPageHeader extends ConsumerWidget {
+  const ProdEventPageHeader({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.12,
+      child: Row(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.3,
+          child: const Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Text(
+              "PROD. EVENT",
+              style: TextStyle(
+                color: TwoSidesColors.textColor,
+                fontFamily: 'Prophet',
+                fontSize: 110,
+                fontWeight: FontWeight.bold,
+                height: 0.9,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.7,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, MediaQuery.of(context).size.width * 0.05, 0),
+            child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "BOOKING", route: RoutingPageNames.booking),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "PROD EVENT", route: RoutingPageNames.prod),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "ADMIN", route: RoutingPageNames.admin),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "ABOUT", route: RoutingPageNames.about),
+                      ],
+                    ),
+                  ),
+                ]),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+class AdminOrgPageHeader extends ConsumerWidget {
+  const AdminOrgPageHeader({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.12,
+      child: Row(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.3,
+          child: const Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Text(
+              "PROD. EVENT",
+              style: TextStyle(
+                color: TwoSidesColors.textColor,
+                fontFamily: 'Prophet',
+                fontSize: 110,
+                fontWeight: FontWeight.bold,
+                height: 0.9,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.7,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, MediaQuery.of(context).size.width * 0.05, 0),
+            child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "BOOKING", route: RoutingPageNames.booking),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "PROD EVENT", route: RoutingPageNames.prod),
+                      ],
+                    ),
+                  ),
+                  IntrinsicWidth(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AnimatedUnderlineButtonSmall(
+                            text: "ADMIN", route: RoutingPageNames.admin),
                       ],
                     ),
                   ),
@@ -235,7 +394,7 @@ class AboutPageHeader extends ConsumerWidget {
 }
 
 class AnimatedUnderlineButtonSmallBlack extends StatefulWidget {
-  AnimatedUnderlineButtonSmallBlack(
+  const AnimatedUnderlineButtonSmallBlack(
       {super.key, required this.text, required this.route});
   final String text;
   final String route;
@@ -264,7 +423,7 @@ class _AnimatedUnderlineButtonSmallBlackState
             },
             child: Text(
               widget.text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'Boldonse',
                 fontSize: 40,
@@ -292,7 +451,7 @@ class _AnimatedUnderlineButtonSmallBlackState
 }
 
 class AnimatedUnderlineButtonSmall extends StatefulWidget {
-  AnimatedUnderlineButtonSmall(
+  const AnimatedUnderlineButtonSmall(
       {super.key, required this.text, required this.route});
   final String text;
   final String route;
@@ -321,7 +480,7 @@ class _AnimatedUnderlineButtonSmallState
             },
             child: Text(
               widget.text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'Boldonse',
                 fontSize: 40,
@@ -349,7 +508,8 @@ class _AnimatedUnderlineButtonSmallState
 }
 
 class AnimatedUnderlineButton extends StatefulWidget {
-  AnimatedUnderlineButton({super.key, required this.text, required this.route});
+  const AnimatedUnderlineButton(
+      {super.key, required this.text, required this.route});
   final String text;
   final String route;
 
@@ -376,7 +536,7 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
             },
             child: Text(
               widget.text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'Boldonse',
                 fontSize: 40,
@@ -404,7 +564,7 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
 }
 
 class HomePageHeader extends ConsumerWidget {
-  HomePageHeader({super.key});
+  const HomePageHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -413,7 +573,7 @@ class HomePageHeader extends ConsumerWidget {
       color: Colors.black.withOpacity(0.8),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: Center(
+        child: const Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -433,7 +593,7 @@ class HomePageHeader extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     AnimatedUnderlineButton(
-                        text: "PROD EVENT", route: RoutingPageNames.booking),
+                        text: "PROD EVENT", route: RoutingPageNames.prod),
                   ],
                 ),
               ),
@@ -443,7 +603,7 @@ class HomePageHeader extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     AnimatedUnderlineButton(
-                        text: "ADMIN", route: RoutingPageNames.booking),
+                        text: "ADMIN", route: RoutingPageNames.admin),
                   ],
                 ),
               ),
@@ -466,7 +626,7 @@ class HomePageHeader extends ConsumerWidget {
 }
 
 class ArtistPageHeader extends ConsumerWidget {
-  ArtistPageHeader({super.key});
+  const ArtistPageHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -484,7 +644,7 @@ class ArtistPageHeader extends ConsumerWidget {
             )),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.7,
-          child: Center(
+          child: const Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -504,7 +664,7 @@ class ArtistPageHeader extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedUnderlineButtonSmall(
-                          text: "PROD EVENT", route: RoutingPageNames.booking),
+                          text: "PROD EVENT", route: RoutingPageNames.prod),
                     ],
                   ),
                 ),
@@ -514,7 +674,7 @@ class ArtistPageHeader extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedUnderlineButtonSmall(
-                          text: "ADMIN", route: RoutingPageNames.booking),
+                          text: "ADMIN", route: RoutingPageNames.admin),
                     ],
                   ),
                 ),

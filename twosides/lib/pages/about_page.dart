@@ -15,69 +15,61 @@ class AboutPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Scaffold(
-        body:
-          Column(
-            children: [
-              AboutPageHeader(),
-              Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          child: Image.asset(
-                            scale: 5,
-                            Assets.images.lOGO2sidesEnvent.path,
-                          ),
-                        ),
-                      ]
-                    ),
-                  ),
-                ]
+      body: Column(children: [
+        AboutPageHeader(),
+        Column(children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.58,
+            child: Row(children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.2,
+                child: Image.asset(
+                  scale: 5,
+                  Assets.images.lOGO2sidesEnvent.path,
+                ),
               ),
-              //Container(
-              //  width: MediaQuery.of(context).size.width,
-              //  height: MediaQuery.of(context).size.height * 0.8,
-              //  child:
-              //    bookingPageViewState.artists.when(
-              //      data: (_) {
-              //        List<Widget> artistGallery = [];
-              //        for (int i = 0; i < bookingPageViewState.artists.value!.length; i++) {
-              //          artistGallery.add(ArtistTile(artist: bookingPageViewState.artists.value![i]));
-              //        }
-              //        return GridView.count(
-              //          primary: false,
-              //          crossAxisCount: 4,
-              //          children: artistGallery,
-              //        );
-              //      },
-              //      error: (error, stacktrace) {
-              //        return Column(
-              //          children: [
-              //            Text(error.toString()),
-              //            Text(stacktrace.toString())
-              //          ]
-              //        );
-              //      },
-              //      loading: () => Container(
-              //        width: MediaQuery.of(context).size.width,
-              //        height: MediaQuery.of(context).size.height,
-              //        color: Colors.black.withOpacity(0.6),
-              //        child: Center(
-              //          child: CircularProgressIndicator(
-              //            color: TwoSidesColors.primaryColor,
-              //          ),
-              //        ),
-              //      ),
-              //    ),
-              //),
-              PageFooter(),
-            ]
+            ]),
           ),
+        ]),
+        //Container(
+        //  width: MediaQuery.of(context).size.width,
+        //  height: MediaQuery.of(context).size.height * 0.8,
+        //  child:
+        //    bookingPageViewState.artists.when(
+        //      data: (_) {
+        //        List<Widget> artistGallery = [];
+        //        for (int i = 0; i < bookingPageViewState.artists.value!.length; i++) {
+        //          artistGallery.add(ArtistTile(artist: bookingPageViewState.artists.value![i]));
+        //        }
+        //        return GridView.count(
+        //          primary: false,
+        //          crossAxisCount: 4,
+        //          children: artistGallery,
+        //        );
+        //      },
+        //      error: (error, stacktrace) {
+        //        return Column(
+        //          children: [
+        //            Text(error.toString()),
+        //            Text(stacktrace.toString())
+        //          ]
+        //        );
+        //      },
+        //      loading: () => Container(
+        //        width: MediaQuery.of(context).size.width,
+        //        height: MediaQuery.of(context).size.height,
+        //        color: Colors.black.withOpacity(0.6),
+        //        child: Center(
+        //          child: CircularProgressIndicator(
+        //            color: TwoSidesColors.primaryColor,
+        //          ),
+        //        ),
+        //      ),
+        //    ),
+        //),
+        PageFooter(),
+      ]),
     );
   }
 }
