@@ -70,7 +70,7 @@ class BookingPageHeader extends ConsumerWidget {
       color: Colors.black,
       child: Row(children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.3,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,64 +99,51 @@ class BookingPageHeader extends ConsumerWidget {
               ]),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.7,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, '${RoutingPageNames.booking}');
-                    },
-                    child: const Text(
-                      'BOOKING',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'PROD EVENT',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'ADMIN',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '${RoutingPageNames.about}');
-                    },
-                    child: const Text(
-                      'ABOUT',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "BOOKING", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "PROD EVENT", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "ADMIN", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "ABOUT", route: RoutingPageNames.about),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -413,91 +400,6 @@ class HomePageHeader extends ConsumerWidget {
                   ],
                 ),
               ),
-              //Container(
-              //  decoration: BoxDecoration(
-              //    border: Border(
-              //      bottom: BorderSide(
-              //        color: TwoSidesColors.primaryColor,
-              //        width: 3,
-              //      )
-              //    ),
-              //  ),
-              //  child: TextButton(
-              //    onPressed: () {},
-              //    child: const Text(
-              //      'BOOKING',
-              //      style: const TextStyle(
-              //        color: Colors.white,
-              //        fontFamily: 'Boldonse',
-              //        fontSize: 40,
-              //        fontWeight: FontWeight.bold,
-              //      ),
-              //  )),
-              //),
-              //Container(
-              //  decoration: BoxDecoration(
-              //    border: Border(
-              //      bottom: BorderSide(
-              //        color: TwoSidesColors.primaryColor,
-              //        width: 3,
-              //      )
-              //    ),
-              //  ),
-              //  child: TextButton(
-              //    onPressed: () {},
-              //    child: const Text(
-              //      'PROD EVENT',
-              //      style: const TextStyle(
-              //        color: Colors.white,
-              //        fontFamily: 'Boldonse',
-              //        fontSize: 40,
-              //        fontWeight: FontWeight.bold,
-              //      ),
-              //  )),
-              //),
-              //Container(
-              //  decoration: BoxDecoration(
-              //    border: Border(
-              //      bottom: BorderSide(
-              //        color: TwoSidesColors.primaryColor,
-              //        width: 3,
-              //      )
-              //    ),
-              //  ),
-              //  child: TextButton(
-              //    onPressed: () {},
-              //    child: const Text(
-              //      'ADMIN',
-              //      style: const TextStyle(
-              //        color: Colors.white,
-              //        fontFamily: 'Boldonse',
-              //        fontSize: 40,
-              //        fontWeight: FontWeight.bold,
-//
-              //      ),
-              //  )),
-              //),
-              //Container(
-              //  decoration: BoxDecoration(
-              //    border: Border(
-              //      bottom: BorderSide(
-              //        color: TwoSidesColors.primaryColor,
-              //        width: 3,
-              //      )
-              //    ),
-              //  ),
-              //  child: TextButton(
-              //    onPressed: () {},
-              //    child: const Text(
-              //      'ABOUT',
-              //      style: const TextStyle(
-              //        color: Colors.white,
-              //        fontFamily: 'Boldonse',
-              //        fontSize: 40,
-              //        fontWeight: FontWeight.bold,
-              //      ),
-              //  )),
-              //),
             ],
           ),
         ),
@@ -516,7 +418,7 @@ class ArtistPageHeader extends ConsumerWidget {
       color: TwoSidesColors.backgroundColor,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
+            width: MediaQuery.of(context).size.width * 0.3,
             child: Center(
               child: Image.asset(
                 scale: 9,
@@ -524,59 +426,51 @@ class ArtistPageHeader extends ConsumerWidget {
               ),
             )),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.7,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'BOOKING',
-                      style: const TextStyle(
-                        color: TwoSidesColors.textColor,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'PROD EVENT',
-                      style: const TextStyle(
-                        color: TwoSidesColors.textColor,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'ADMIN',
-                      style: const TextStyle(
-                        color: TwoSidesColors.textColor,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'ABOUT',
-                      style: const TextStyle(
-                        color: TwoSidesColors.textColor,
-                        fontFamily: 'Boldonse',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    )),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "BOOKING", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "PROD EVENT", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "ADMIN", route: RoutingPageNames.booking),
+                    ],
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedUnderlineButtonSmall(
+                          text: "ABOUT", route: RoutingPageNames.about),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
