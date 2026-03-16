@@ -814,6 +814,34 @@ const getAssetById = (request, response) => {
     });
 }
 
+// PG QUERY TO GET ASSET
+const getAssetByIdForDownload = (request, response) => {
+    const id = String(request.params.id);
+    const artistName = String(request.query.artistName);
+
+    pool.query(`
+      SELECT original_name, storage_key, mime_type
+      FROM asset
+      WHERE id = $1`, [id], (error, results) => {
+        if (error) {
+          throw error;
+        }
+        if (!results.rows.length) return response.sendStatus(404);
+
+        const file = results.rows[0];
+        const fullPath = path.join(STORAGE_ROOT, file.storage_key);
+
+        response.setHeader(
+          'Content-Disposition',
+        );
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+
+        response.type(file.mime_type);
+        response.sendFile(fullPath);
+    });
+}
+
 // PG QUERY TO GET ALL ASSETS
 const getAllAsset = (request, response) => {
     pool.query('SELECT * FROM asset ORDER BY id ASC', (error, results) => {

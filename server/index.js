@@ -97,7 +97,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 20 * 1024 * 1024 }, // 10 MB
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB
 });
 
 
@@ -473,6 +473,15 @@ express_app.get('/asset/:id', async (req, res) => {
   console.log("CALLED EXPRESS ENDPOINT: GET ASSET BY ID");
   try {
     queries.getAssetById(req, res);
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+express_app.get('/asset/dl/:id', async (req, res) => {
+  console.log("CALLED EXPRESS ENDPOINT: GET ASSET BY ID");
+  try {
+    queries.getAssetByIdForDownload(req, res);
   } catch (e) {
     console.error(e);
   }
