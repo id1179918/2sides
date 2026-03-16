@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twosides/http/download_file.dart';
 import 'package:twosides/models/artist.dart';
 import 'package:twosides/models/link.dart';
 import 'package:twosides/models/asset.dart';
@@ -55,7 +56,7 @@ class LinkIconButton extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+      padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
       child: Container(
         height: 40,
         width: 40,
@@ -147,17 +148,17 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
         Container(
           height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width / 3,
-          child: LinkIcons(links: widget.artist.links!),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
             ),
           ),
+          child: LinkIcons(links: widget.artist.links!),
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width / 3,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               left: BorderSide(width: 1, color: TwoSidesColors.textColor),
               right: BorderSide(width: 1, color: TwoSidesColors.textColor),
@@ -166,7 +167,7 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
           ),
           child: Center(
             child: GestureDetector(
-                child: Text("Booker l'artiste"),
+                child: const Text("Booker l'artiste"),
                 onTap: () async {
                   final emailUri = Uri.parse(
                       'mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
@@ -177,18 +178,22 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
         Container(
           height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width / 3,
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
+            ),
+          ),
           child: Center(
             child: GestureDetector(
                 child: Text("PressKit - ${widget.artist.name}"),
                 onTap: () async {
-                  //final emailUri = Uri.parse('mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
-                  //await launchUrl(emailUri);
+                  downloadFile(
+                      widget.artist.assets!
+                          .firstWhere(
+                              (asset) => asset.role == AssetRole.presskit)
+                          .id,
+                      widget.artist.name);
                 }),
-          ),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 1, color: TwoSidesColors.textColor),
-            ),
           ),
         ),
       ]),
@@ -209,12 +214,12 @@ class _ArtistBioSectionState extends State<ArtistBioSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 1.5,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -231,7 +236,7 @@ class _ArtistBioSectionState extends State<ArtistBioSection> {
                     ),
                     Text(
                       widget.artist.location!,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: TwoSidesColors.primaryColor,
                         fontFamily: 'Boldonse',
                         fontSize: 18,
@@ -242,13 +247,13 @@ class _ArtistBioSectionState extends State<ArtistBioSection> {
                   ]),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
+                width: MediaQuery.of(context).size.width / 1.5,
                 child: Text(
                   widget.artist.description!,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: TwoSidesColors.textColor,
                     fontFamily: 'Prophet',
                     fontSize: 17,
@@ -285,8 +290,8 @@ class _ArtistLiveSectionState extends State<ArtistLiveSection> {
       });
       return Column(children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
-          child: Align(
+          width: MediaQuery.of(context).size.width / 1.5,
+          child: const Align(
             alignment: Alignment.centerRight,
             child: Text(
               "LIVE / PODCAST",
@@ -305,7 +310,7 @@ class _ArtistLiveSectionState extends State<ArtistLiveSection> {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: AlignmentDirectional.center, children: [
             Container(
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 1.5,
               alignment: Alignment.center,
               child: HorizontalCarousel(
                   items: items,
@@ -360,8 +365,8 @@ class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
       });
       return Column(children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
-          child: Align(
+          width: MediaQuery.of(context).size.width / 1.5,
+          child: const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "RELEASE",
@@ -380,7 +385,7 @@ class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: AlignmentDirectional.center, children: [
             Container(
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 1.5,
               alignment: Alignment.center,
               child: HorizontalCarousel(
                   items: items,
@@ -501,7 +506,7 @@ class ArtistsListSection extends ConsumerWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+      padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: Wrap(
@@ -510,7 +515,7 @@ class ArtistsListSection extends ConsumerWidget {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.6 / 6 - 8,
-              child: ArtistNameButton(),
+              child: const ArtistNameButton(),
             ),
             for (final artist in artists)
               SizedBox(
@@ -588,12 +593,13 @@ class ArtistPage extends ConsumerWidget {
                               ArtistBody(
                                   artist: artistPageViewState.artist.value!),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(0, 100, 0, 80),
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 100, 0, 80),
                                 child: ArtistsListSection(
                                     artists:
                                         artistPageViewState.artists.value!),
                               ),
-                              PageFooter(),
+                              const PageFooter(),
                             ]);
                           })),
                     );
@@ -608,7 +614,7 @@ class ArtistPage extends ConsumerWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     color: TwoSidesColors.backgroundColor,
-                    child: Center(
+                    child: const Center(
                       child: CircularProgressIndicator(
                         color: TwoSidesColors.primaryColor,
                       ),
@@ -625,7 +631,7 @@ class ArtistPage extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   color: TwoSidesColors.backgroundColor,
-                  child: Center(
+                  child: const Center(
                     child: CircularProgressIndicator(
                       color: TwoSidesColors.primaryColor,
                     ),
@@ -634,7 +640,7 @@ class ArtistPage extends ConsumerWidget {
               ),
             ),
           ]),
-          ArtistPageHeader(),
+          const ArtistPageHeader(),
         ]));
   }
 }
