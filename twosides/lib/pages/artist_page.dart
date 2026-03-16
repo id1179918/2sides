@@ -184,16 +184,19 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
             ),
           ),
           child: Center(
-            child: GestureDetector(
-                child: Text("PressKit - ${widget.artist.name}"),
-                onTap: () async {
-                  downloadFile(
-                      widget.artist.assets!
-                          .firstWhere(
-                              (asset) => asset.role == AssetRole.presskit)
-                          .id,
-                      widget.artist.name);
-                }),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                  child: Text("PressKit - ${widget.artist.name}"),
+                  onTap: () async {
+                    downloadFile(
+                        widget.artist.assets!
+                            .firstWhere(
+                                (asset) => asset.role == AssetRole.presskit)
+                            .id,
+                        widget.artist.name);
+                  }),
+            ),
           ),
         ),
       ]),
