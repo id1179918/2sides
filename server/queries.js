@@ -1263,6 +1263,7 @@ export default {
   deleteArtistRosterPair,
   createAsset,
   getAssetById,
+  getAssetByIdForDownload,
   getAllAsset,
   deleteAsset,
   assignAssetEntityRole,
