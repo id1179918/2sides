@@ -8,57 +8,6 @@ import 'package:twosides/constants/colors.dart';
 import 'package:twosides/constants/routes.dart';
 import 'package:twosides/gen/assets.gen.dart';
 
-enum SampleItem { itemOne, itemTwo, itemThree }
-
-class MenuDropDown extends StatefulWidget {
-  const MenuDropDown({super.key, required this.currentPage});
-  final String currentPage;
-
-  @override
-  State<MenuDropDown> createState() => _MenuDropDownState();
-}
-
-class _MenuDropDownState extends State<MenuDropDown> {
-  SampleItem _dropdownvalue = SampleItem.itemTwo;
-  var _items = ['2Sides', 'Booking', 'About'];
-  //var _routes = [
-  //  '2Sides',
-  //  'Booking',
-  //  'About',
-  //];
-
-  @override
-  Widget build(BuildContext context) {
-    switch (widget.currentPage) {
-      case "Booking":
-        _dropdownvalue = SampleItem.itemTwo;
-        break;
-      case "About":
-        _dropdownvalue = SampleItem.itemThree;
-        break;
-    }
-    ;
-
-    return PopupMenuButton<SampleItem>(
-      icon: const Icon(Icons.menu, size: 50),
-      initialValue: _dropdownvalue,
-      onSelected: (SampleItem item) {
-        setState(() {
-          _dropdownvalue = item;
-        });
-      },
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
-        PopupMenuItem<SampleItem>(
-            value: SampleItem.itemOne, child: Text(_items[0])),
-        PopupMenuItem<SampleItem>(
-            value: SampleItem.itemTwo, child: Text(_items[1])),
-        PopupMenuItem<SampleItem>(
-            value: SampleItem.itemThree, child: Text(_items[2])),
-      ],
-    );
-  }
-}
-
 class BookingPageHeader extends ConsumerWidget {
   const BookingPageHeader({super.key});
 
@@ -410,6 +359,7 @@ class _AnimatedUnderlineButtonSmallBlackState
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: Column(
@@ -467,6 +417,7 @@ class _AnimatedUnderlineButtonSmallState
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: Column(
@@ -523,6 +474,7 @@ class _AnimatedUnderlineButtonState extends State<AnimatedUnderlineButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: Column(
