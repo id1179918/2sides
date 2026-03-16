@@ -167,6 +167,7 @@ class _ArtistTileState extends State<ArtistTile> {
             context, '${RoutingPageNames.artist}/${widget.artist.id}');
       },
       child: MouseRegion(
+        cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
         child: Stack(
