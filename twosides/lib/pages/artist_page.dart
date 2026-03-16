@@ -60,11 +60,14 @@ class LinkIconButton extends StatelessWidget {
       child: Container(
         height: 40,
         width: 40,
-        child: GestureDetector(
-            onTap: () async {
-              goToUrl(_url);
-            },
-            child: SvgPicture.asset(_image)),
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+              onTap: () async {
+                goToUrl(_url);
+              },
+              child: SvgPicture.asset(_image)),
+        ),
       ),
     );
   }
