@@ -16,7 +16,7 @@ class AboutPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Column(children: [
-        AboutPageHeader(),
+        const AboutPageHeader(),
         Column(children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.58,
@@ -28,10 +28,24 @@ class AboutPage extends ConsumerWidget {
                   Assets.images.lOGO2sidesEnvent.path,
                 ),
               ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: const Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Text(
+                      "2Sides est une agence de booking d'artistes émergents dans les domaines de la musique, du stand-up et du théâtre. Nous nous engageons à promouvoir la diversité culturelle en mettant en avant des talents issus de tous horizons. Notre mission est de connecter les artistes avec des opportunités de performance tout en offrant une expérience unique à notre public.",
+                      style: TextStyle(
+                        color: TwoSidesColors.primaryColor,
+                        fontFamily: 'NeueMetanaNext',
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                    )),
+              ),
             ]),
           ),
         ]),
-        PageFooter(),
+        const PageFooter(),
       ]),
     );
   }
