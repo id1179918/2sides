@@ -169,13 +169,16 @@ class _ArtistGridInfoState extends State<ArtistGridInfo> {
             ),
           ),
           child: Center(
-            child: GestureDetector(
-                child: const Text("Booker l'artiste"),
-                onTap: () async {
-                  final emailUri = Uri.parse(
-                      'mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
-                  await launchUrl(emailUri);
-                }),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                  child: const Text("Booker l'artiste"),
+                  onTap: () async {
+                    final emailUri = Uri.parse(
+                        'mailto:${"2sidesbooking@gmail.com"}?subject=Booking ${widget.artist.name}');
+                    await launchUrl(emailUri);
+                  }),
+            ),
           ),
         ),
         Container(
