@@ -479,6 +479,7 @@ class _ArtistNameButtonState extends State<ArtistNameButton> {
             Navigator.pushNamed(context, '${RoutingPageNames.booking}');
           },
           child: MouseRegion(
+            cursor: SystemMouseCursors.click,
             onEnter: (_) => setState(() => _isHovered = true),
             onExit: (_) => setState(() => _isHovered = false),
             child: AnimatedOpacity(
