@@ -831,9 +831,6 @@ const getAssetByIdForDownload = (request, response) => {
         const file = results.rows[0];
         const fullPath = path.join(STORAGE_ROOT, file.storage_key);
 
-        response.setHeader(
-          'Content-Disposition',
-        );
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
 
