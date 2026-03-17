@@ -158,8 +158,8 @@ class _ArtistTileState extends State<ArtistTile> {
   @override
   Widget build(BuildContext context) {
     _hoverColor = widget.artist.style == "Dub"
-        ? TwoSidesColors.primaryColor.withOpacity(0.3)
-        : TwoSidesColors.secondaryColor.withOpacity(0.9);
+        ? TwoSidesColors.primaryColor.withValues(alpha: 0.3)
+        : TwoSidesColors.secondaryColor.withValues(alpha: 0.8);
 
     return GestureDetector(
       onTap: () {
@@ -178,7 +178,7 @@ class _ArtistTileState extends State<ArtistTile> {
               opacity: _isHovered ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 150),
               child: Container(
-                color: _hoverColor.withOpacity(0.5),
+                color: _hoverColor,
               ),
             ),
             Center(
