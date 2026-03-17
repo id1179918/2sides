@@ -129,6 +129,7 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
     state = AdminInterfaceViewState(
         state.pageType, state.artists, const AsyncLoading());
     try {
+      print(artist.label);
       Auth admin = await _artistRepository.updateArtist(artist);
       state = AdminInterfaceViewState(
           state.pageType, state.artists, AsyncData(admin));

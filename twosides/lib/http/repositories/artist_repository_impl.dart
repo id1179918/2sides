@@ -147,6 +147,8 @@ class ArtistRepositoryImpl implements ArtistRepository {
     try {
       var client = TwoSidesHttp();
 
+      print(artist.label);
+
       var uri = Uri.parse('${httpsHead}${baseUrl}/artist');
 
       var response = client.put(uri,
