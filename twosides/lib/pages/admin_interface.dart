@@ -575,6 +575,7 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
     final String _originalLocation = widget.artist.location ?? "";
     final String _originalDescription = widget.artist.description ?? "";
     final String _originalStyle = widget.artist.style ?? "";
+    final String _originalLabel = widget.artist.style ?? "";
     final TextEditingController _nameController =
         TextEditingController(text: widget.artist.name);
     final TextEditingController _locationController =
@@ -588,6 +589,8 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
         .map((asset) =>
             TextEditingController(text: assetRoleToString(asset.role)))
         .toList();
+    final TextEditingController _labelController =
+        TextEditingController(text: widget.artist.label ?? "");
     final List<TextEditingController> _linkControllers = setupLinkController();
     //LinkType.values.map((linkType) => TextEditingController(text: (linkType.toString()).split('.')[1])).toList();
     List<bool> linkHaveChanged =
@@ -618,6 +621,9 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
       if (_originalStyle != _styleController.text) {
         return true;
       }
+      if (_originalLabel != _labelController.text) {
+        return true;
+      }
       return false;
     }
 
@@ -630,6 +636,22 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
             width: MediaQuery.of(context).size.width * 0.17,
             child: TextFormField(
               controller: _nameController,
+              decoration: const InputDecoration(border: OutlineInputBorder()),
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
+          ),
+        ),
+      ]),
+      Row(children: [
+        Text("Label"),
+        Padding(
+          padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.17,
+            child: TextFormField(
+              controller: _labelController,
               decoration: const InputDecoration(border: OutlineInputBorder()),
               style: TextStyle(
                 fontSize: 15,
@@ -958,6 +980,7 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
                 name: _nameController.text,
                 location: _locationController.text,
                 description: _descriptionController.text,
+                label: _labelController.text,
               );
               await ref
                   .read(adminInterfaceViewModelProvider.notifier)

@@ -273,7 +273,7 @@ const getArtistByName = (request, response) => {
 // PG QUERY TO UPDATE ARTIST ELEMENT
 const updateArtist = (request, response) => {
     const id = parseInt(request.body.id);
-    const { name, location, style, description } = request.body;
+    const { name, location, style, description, label } = request.body;
 
     if (!id) {
         throw response.status(500).send(`Must specify ID of artist`);
@@ -303,6 +303,13 @@ const updateArtist = (request, response) => {
     if (description) {
         try {
             updateFieldFromTable("description", description, "artist", id, response);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    if (label) {
+        try {
+            updateFieldFromTable("label", label, "artist", id, response);
         } catch (e) {
             console.error(e);
         }
