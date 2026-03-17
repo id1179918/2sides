@@ -975,7 +975,6 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
         ElevatedButton(
           onPressed: () async {
             if (hasValuesChanged()) {
-              print(_labelController.text);
               Artist updatedArtist = Artist(
                 id: widget.artist.id,
                 name: _nameController.text,
