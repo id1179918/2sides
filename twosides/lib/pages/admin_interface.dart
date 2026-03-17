@@ -575,7 +575,7 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
     final String _originalLocation = widget.artist.location ?? "";
     final String _originalDescription = widget.artist.description ?? "";
     final String _originalStyle = widget.artist.style ?? "";
-    final String _originalLabel = widget.artist.style ?? "";
+    final String _originalLabel = widget.artist.label ?? "";
     final TextEditingController _nameController =
         TextEditingController(text: widget.artist.name);
     final TextEditingController _locationController =
