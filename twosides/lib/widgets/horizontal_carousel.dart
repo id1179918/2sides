@@ -104,31 +104,36 @@ class _HorizontalCarouselState extends State<HorizontalCarousel> {
             scrollDirection: Axis.horizontal,
             //padding: const EdgeInsets.symmetric(horizontal: 56),
             itemCount: widget.items.length,
-            separatorBuilder: (_, __) =>
-                SizedBox(width: widget.itemSpacing),
-            itemBuilder: (context, index) =>
-                _CarouselCard(item: widget.items[index], width: widget.itemWidth),
+            separatorBuilder: (_, __) => SizedBox(width: widget.itemSpacing),
+            itemBuilder: (context, index) => _CarouselCard(
+                item: widget.items[index], width: widget.itemWidth),
           ),
 
           // ── Left arrow ───────────────────────────────────────────
-          Positioned(
-            left: 8,
-            bottom: 0,
-            child: _NavArrow(
-              icon: Icons.chevron_left_rounded,
-              visible: _canScrollLeft,
-              onTap: _scrollLeft,
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Positioned(
+              left: 8,
+              bottom: 0,
+              child: _NavArrow(
+                icon: Icons.chevron_left_rounded,
+                visible: _canScrollLeft,
+                onTap: _scrollLeft,
+              ),
             ),
           ),
 
           // ── Right arrow ──────────────────────────────────────────
-          Positioned(
-            right: 8,
-            bottom: 0,
-            child: _NavArrow(
-              icon: Icons.chevron_right_rounded,
-              visible: _canScrollRight,
-              onTap: _scrollRight,
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Positioned(
+              right: 8,
+              bottom: 0,
+              child: _NavArrow(
+                icon: Icons.chevron_right_rounded,
+                visible: _canScrollRight,
+                onTap: _scrollRight,
+              ),
             ),
           ),
         ],
@@ -211,13 +216,15 @@ class _NavArrowState extends State<_NavArrow> {
                     ? TwoSidesColors.secondaryColor.withOpacity(0.70)
                     : TwoSidesColors.secondaryColor.withOpacity(0.90),
                 border: Border.all(
-                  color: TwoSidesColors.textColor.withOpacity(_hovered ? 0.35 : 0.18),
+                  color: TwoSidesColors.textColor
+                      .withOpacity(_hovered ? 0.35 : 0.18),
                   width: 1,
                 ),
               ),
               child: Icon(
                 widget.icon,
-                color: TwoSidesColors.textColor.withOpacity(_hovered ? 1.0 : 0.75),
+                color:
+                    TwoSidesColors.textColor.withOpacity(_hovered ? 1.0 : 0.75),
                 size: 22,
               ),
             ),
