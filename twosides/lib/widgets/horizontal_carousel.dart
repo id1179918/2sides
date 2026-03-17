@@ -110,30 +110,24 @@ class _HorizontalCarouselState extends State<HorizontalCarousel> {
           ),
 
           // ── Left arrow ───────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Positioned(
-              left: 8,
-              bottom: 0,
-              child: _NavArrow(
-                icon: Icons.chevron_left_rounded,
-                visible: _canScrollLeft,
-                onTap: _scrollLeft,
-              ),
+          Positioned(
+            left: 8,
+            bottom: 0,
+            child: _NavArrow(
+              icon: Icons.chevron_left_rounded,
+              visible: _canScrollLeft,
+              onTap: _scrollLeft,
             ),
           ),
 
           // ── Right arrow ──────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Positioned(
-              right: 8,
-              bottom: 0,
-              child: _NavArrow(
-                icon: Icons.chevron_right_rounded,
-                visible: _canScrollRight,
-                onTap: _scrollRight,
-              ),
+          Positioned(
+            right: 8,
+            bottom: 0,
+            child: _NavArrow(
+              icon: Icons.chevron_right_rounded,
+              visible: _canScrollRight,
+              onTap: _scrollRight,
             ),
           ),
         ],
