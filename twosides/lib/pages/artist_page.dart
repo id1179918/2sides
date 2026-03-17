@@ -329,7 +329,7 @@ class _ArtistLiveSectionState extends State<ArtistLiveSection> {
               left: 0,
               top: 0,
               bottom: 0,
-              width: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 8,
               child: Container(
                 color: TwoSidesColors.backgroundColor,
               ),
@@ -338,7 +338,7 @@ class _ArtistLiveSectionState extends State<ArtistLiveSection> {
               right: 0,
               top: 0,
               bottom: 0,
-              width: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 8,
               child: Container(
                 color: TwoSidesColors.backgroundColor,
               ),
@@ -404,7 +404,7 @@ class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
               left: 0,
               top: 0,
               bottom: 0,
-              width: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 8,
               child: Container(
                 color: TwoSidesColors.backgroundColor,
               ),
@@ -413,7 +413,7 @@ class _ArtistReleaseSectionState extends State<ArtistReleaseSection> {
               right: 0,
               top: 0,
               bottom: 0,
-              width: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 8,
               child: Container(
                 color: TwoSidesColors.backgroundColor,
               ),
