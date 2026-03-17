@@ -189,22 +189,44 @@ class _ArtistTileState extends State<ArtistTile> {
                   offset: _isHovered ? Offset.zero : const Offset(0, 0.1),
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeOut,
-                  child: Text(
-                    widget.artist.name.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Boldonse',
-                      shadows: [
-                        Shadow(
-                          blurRadius: 8,
-                          color: Colors.black54,
-                          offset: Offset(0, 2),
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.artist.name.toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Boldonse',
+                          shadows: [
+                            Shadow(
+                              blurRadius: 8,
+                              color: Colors.black54,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      if (widget.artist.label != null)
+                        Text(
+                          widget.artist.label!.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Boldonse',
+                            shadows: [
+                              Shadow(
+                                blurRadius: 8,
+                                color: Colors.black54,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
