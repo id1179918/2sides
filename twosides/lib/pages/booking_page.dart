@@ -190,6 +190,7 @@ class _ArtistTileState extends State<ArtistTile> {
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeOut,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         widget.artist.name.toUpperCase(),
