@@ -151,15 +151,18 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
     }
   }
 
-  //Future<void> deleteArtist(Artist artist) async {
-  //  state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
-  //  try {
-  //    Auth admin = await _artistRepository.updateArtist(artist);
-  //    state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
-  //  } catch (e, s) {
-  //    state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
-  //  }
-  //}
+  Future<void> deleteArtist(int id) async {
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
+    try {
+      Auth admin = await _artistRepository.deleteArtist(id);
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
+    } catch (e, s) {
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
+    }
+  }
 
   Future<void> uploadAssetArtist(int artistId, XFile asset, String role) async {
     state = AdminInterfaceViewState(

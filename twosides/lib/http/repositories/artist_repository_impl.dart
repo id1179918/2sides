@@ -89,16 +89,25 @@ class ArtistRepositoryImpl implements ArtistRepository {
       rethrow;
     }
   }
-//
-  //@override
-  //Future<void> deleteArtist(int id) async {
-  //  final response =
-  //      await http.delete(Uri.parse('$baseUrl/artists/$id'));
-//
-  //  if (response.statusCode != 204) {
-  //    throw Exception('Failed to delete artist');
-  //  }
-  //}
+
+  @override
+  Future<Auth> deleteArtist(int id) async {
+    try {
+      var client = TwoSidesHttp();
+      var uri = Uri.parse('${httpsHead}${baseUrl}/artist');
+
+      var response = client.delete(uri,
+          body: jsonEncode({
+            "id": id,
+          }));
+
+      return await client.handleResponse<Auth>(
+          response, (json) => Auth.fromJson(json));
+    } catch (e) {
+      log("Error API: " + e.toString());
+      rethrow;
+    }
+  }
 
   @override
   Future<List<Asset>> getAllAssetsOfArtist(int artistId) async {
