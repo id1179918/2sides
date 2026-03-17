@@ -1017,18 +1017,9 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
         ),
         ElevatedButton(
           onPressed: () async {
-            if (hasValuesChanged()) {
-              Artist updatedArtist = Artist(
-                id: widget.artist.id,
-                name: _nameController.text,
-                location: _locationController.text,
-                description: _descriptionController.text,
-              );
-              await ref
-                  .read(adminInterfaceViewModelProvider.notifier)
-                  .updateArtist(updatedArtist);
-              //adminInterfaceViewState.admin
-            }
+            await ref
+                .read(adminInterfaceViewModelProvider.notifier)
+                .deleteArtist(widget.artist.id);
           },
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
