@@ -38,7 +38,6 @@ class Artist {
   });
 
   factory Artist.fromJson(dynamic json) {
-    log(json.toString());
     return Artist(
       id: json['id']!,
       name: json['name']! as String,

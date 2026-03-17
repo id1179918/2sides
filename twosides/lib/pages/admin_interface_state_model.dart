@@ -13,13 +13,16 @@ import 'package:twosides/models/asset.dart';
 import 'package:cross_file/cross_file.dart';
 import 'dart:developer';
 
-final adminInterfaceViewModelProvider =
-    StateNotifierProvider.autoDispose<AdminInterfaceViewModel, AdminInterfaceViewState>(
-        (ref) {
-  return AdminInterfaceViewModel(ref.watch(adminRepositoryProvider), ref.watch(artistRepositoryProvider), ref.watch(assetRepositoryProvider), ref.watch(linkRepositoryProvider));
+final adminInterfaceViewModelProvider = StateNotifierProvider.autoDispose<
+    AdminInterfaceViewModel, AdminInterfaceViewState>((ref) {
+  return AdminInterfaceViewModel(
+      ref.watch(adminRepositoryProvider),
+      ref.watch(artistRepositoryProvider),
+      ref.watch(assetRepositoryProvider),
+      ref.watch(linkRepositoryProvider));
 });
 
-enum AdminInterfacePageTypes {artist, event, about}
+enum AdminInterfacePageTypes { artist, event, about }
 
 class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   final AdminRepository _adminRepository;
@@ -27,14 +30,14 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   final AssetRepository _assetRepository;
   final LinkRepository _linkRepository;
 
-  AdminInterfaceViewModel(this._adminRepository, this._artistRepository, this._assetRepository, this._linkRepository)
+  AdminInterfaceViewModel(this._adminRepository, this._artistRepository,
+      this._assetRepository, this._linkRepository)
       : super(AdminInterfaceViewState(
-        const AsyncData(AdminInterfacePageTypes.artist),
-        AsyncData(null),
-        AsyncData(null)
-      )) {
-        loadAllArtists();
-      }
+            const AsyncData(AdminInterfacePageTypes.artist),
+            AsyncData(null),
+            AsyncData(null))) {
+    loadAllArtists();
+  }
 
   void changeInterfacePage(AdminInterfacePageTypes newPageType) {
     state = AdminInterfaceViewState(
@@ -45,21 +48,26 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   }
 
   Future<void> loadAllArtists() async {
-    state = AdminInterfaceViewState(state.pageType, const AsyncLoading(), state.admin);
+    state = AdminInterfaceViewState(
+        state.pageType, const AsyncLoading(), state.admin);
     try {
       List<Artist> artists = await _artistRepository.getAllArtists();
       List<Artist> artistsWithAssets = await loadAllArtistsAssets(artists);
-      List<Artist> artistsWithLinks = await loadAllArtistLinks(artistsWithAssets);
-      state = AdminInterfaceViewState(state.pageType, AsyncData(artistsWithLinks), state.admin);
+      List<Artist> artistsWithLinks =
+          await loadAllArtistLinks(artistsWithAssets);
+      state = AdminInterfaceViewState(
+          state.pageType, AsyncData(artistsWithLinks), state.admin);
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, AsyncError(e, s), state.admin);
+      state = AdminInterfaceViewState(
+          state.pageType, AsyncError(e, s), state.admin);
     }
   }
 
   Future<List<Artist>> loadAllArtistsAssets(List<Artist> artists) async {
     if (artists == null) {
       throw FormatException('Failed to load artists');
-    };
+    }
+    ;
 
     final oldArtists = artists;
 
@@ -67,8 +75,7 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
       final List<Artist> updatedArtists = [];
 
       for (final artist in oldArtists) {
-        final assets =
-            await _artistRepository.getAllAssetsOfArtist(artist.id);
+        final assets = await _artistRepository.getAllAssetsOfArtist(artist.id);
 
         updatedArtists.add(
           artist.copyWith(assets: assets),
@@ -83,7 +90,8 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   Future<List<Artist>> loadAllArtistLinks(List<Artist> artists) async {
     if (artists == null) {
       throw FormatException('Failed to load artist');
-    };
+    }
+    ;
 
     final oldArtists = artists;
 
@@ -91,8 +99,7 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
       final List<Artist> updatedArtists = [];
 
       for (final artist in oldArtists) {
-        final links =
-            await _artistRepository.getAllLinksOfArtist(artist.id);
+        final links = await _artistRepository.getAllLinksOfArtist(artist.id);
 
         updatedArtists.add(
           artist.copyWith(links: links),
@@ -105,33 +112,42 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   }
 
   Future<void> logout() async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       await _adminRepository.logout();
       Auth adminLogout = Auth(status: "logout");
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(adminLogout));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(adminLogout));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
   Future<void> updateArtist(Artist artist) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       Auth admin = await _artistRepository.updateArtist(artist);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
   Future<void> createArtist(String name, String style) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       Auth newArtist = await _artistRepository.createArtist(name, style);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(newArtist));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(newArtist));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
@@ -146,44 +162,59 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
   //}
 
   Future<void> uploadAssetArtist(int artistId, XFile asset, String role) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       int assetId = await _assetRepository.uploadAsset(asset);
-      Auth admin = await _assetRepository.assignAssetArtist(assetId, artistId, role);
+      Auth admin =
+          await _assetRepository.assignAssetArtist(assetId, artistId, role);
       //Auth admin = await _assetRepository.upsertAssetArtist(artistId, role);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
   Future<void> deleteAsset(int assetId) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       Auth admin = await _assetRepository.deleteAsset(assetId);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
-  Future<void> upsertLinkArtist(String linkType, String url, String label, String entityType, String entityId) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+  Future<void> upsertLinkArtist(String linkType, String url, String label,
+      String entityType, String entityId) async {
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
-      Auth admin = await _linkRepository.upsertLinkEntity(linkType, url, label, entityType, entityId);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
+      Auth admin = await _linkRepository.upsertLinkEntity(
+          linkType, url, label, entityType, entityId);
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 
   Future<void> deleteLink(int linkId) async {
-    state = AdminInterfaceViewState(state.pageType, state.artists, const AsyncLoading());
+    state = AdminInterfaceViewState(
+        state.pageType, state.artists, const AsyncLoading());
     try {
       Auth admin = await _linkRepository.deleteLink(linkId);
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncData(admin));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncData(admin));
     } catch (e, s) {
-      state = AdminInterfaceViewState(state.pageType, state.artists, AsyncError(e, s));
+      state = AdminInterfaceViewState(
+          state.pageType, state.artists, AsyncError(e, s));
     }
   }
 }
