@@ -73,6 +73,13 @@ class LinkIconButton extends StatelessWidget {
   }
 }
 
+const linkOrder = {
+  LinkType.ra: 0,
+  LinkType.bandcamp: 1,
+  LinkType.soundcloud: 2,
+  LinkType.instagram: 3,
+};
+
 //
 class LinkIcons extends StatefulWidget {
   const LinkIcons({super.key, required this.links});
@@ -88,10 +95,19 @@ class _LinkIconsState extends State<LinkIcons> {
   @override
   Widget build(BuildContext context) {
     iconWidgets = [];
-    for (final link in widget.links) {
-      if (link.type != LinkType.live && link.type != LinkType.release) {
-        iconWidgets.add(LinkIconButton(link: link));
-      }
+    List<Link> userLinks = widget.links
+        .where((link) =>
+            link.type != LinkType.live && link.type != LinkType.release)
+        .toList();
+
+    userLinks.sort((a, b) {
+      final orderA = linkOrder[a.type] ?? 99;
+      final orderB = linkOrder[b.type] ?? 99;
+      return orderA.compareTo(orderB);
+    });
+
+    for (final link in userLinks) {
+      iconWidgets.add(LinkIconButton(link: link));
     }
 
     return Row(
