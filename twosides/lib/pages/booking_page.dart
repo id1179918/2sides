@@ -159,7 +159,7 @@ class _ArtistTileState extends State<ArtistTile> {
   Widget build(BuildContext context) {
     _hoverColor = widget.artist.style == "Dub"
         ? TwoSidesColors.primaryColor.withOpacity(0.3)
-        : TwoSidesColors.secondaryColor.withOpacity(0.3);
+        : TwoSidesColors.secondaryColor.withOpacity(0.9);
 
     return GestureDetector(
       onTap: () {
