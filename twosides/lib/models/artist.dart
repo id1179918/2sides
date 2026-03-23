@@ -48,7 +48,7 @@ class Artist {
       description:
           json['description'] == null ? "" : json['description'] as String,
       label: json['label'] == null ? "" : json['label'] as String,
-      position: json['position'] == null ? 0 : json['position'] as int,
+      position: json['pos'] == null ? null : json['pos'] as int,
     );
   }
 

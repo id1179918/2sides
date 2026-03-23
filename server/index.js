@@ -70,7 +70,6 @@ function requireAdmin(req, res, next) {
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     req.admin = decoded;
-    console.log("shit works");
     next();
   } catch (err) {
     console.log("error token");
