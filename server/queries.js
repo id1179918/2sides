@@ -276,7 +276,7 @@ const updateArtist = (request, response) => {
     const { name, location, style, description, label } = request.body;
     const position = request.body.position !== undefined ? parseInt(request.body.position) : undefined;
 
-    console.log(request.body);
+    console.log(position);
 
     if (!id) {
         throw response.status(500).send(`Must specify ID of artist`);
