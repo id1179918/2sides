@@ -5,15 +5,15 @@ import 'package:twosides/twosides_provider.dart';
 import 'package:twosides/models/entity_asset.dart';
 import 'dart:developer';
 
-final bookingPageViewModelProvider = StateNotifierProvider.autoDispose<BookingPageViewModel, BookingPageViewState>(
-  (ref) {
-    return BookingPageViewModel(ref.watch(artistRepositoryProvider));
-  }
-);
+final bookingPageViewModelProvider = StateNotifierProvider.autoDispose<
+    BookingPageViewModel, BookingPageViewState>((ref) {
+  return BookingPageViewModel(ref.watch(artistRepositoryProvider));
+});
 
 class BookingPageViewModel extends StateNotifier<BookingPageViewState> {
   final ArtistRepository _artistRepository;
-  BookingPageViewModel(this._artistRepository): super(BookingPageViewState(const AsyncLoading())) {
+  BookingPageViewModel(this._artistRepository)
+      : super(BookingPageViewState(const AsyncLoading())) {
     loadAllArtists();
   }
 
@@ -33,7 +33,9 @@ class BookingPageViewModel extends StateNotifier<BookingPageViewState> {
     try {
       List<Artist> artists = await _artistRepository.getAllArtists();
       List<Artist> artistsWithAssets = await loadAllArtistsAssets(artists);
-      state = BookingPageViewState(AsyncData(artistsWithAssets));
+
+      state =
+          BookingPageViewState(AsyncData(sortByPosition(artistsWithAssets)));
     } catch (e, s) {
       state = BookingPageViewState(AsyncError(e, s));
     }
@@ -42,7 +44,8 @@ class BookingPageViewModel extends StateNotifier<BookingPageViewState> {
   Future<List<Artist>> loadAllArtistsAssets(List<Artist> artists) async {
     if (artists == null) {
       throw FormatException('Failed to load artists');
-    };
+    }
+    ;
 
     final oldArtists = artists;
 
@@ -50,8 +53,7 @@ class BookingPageViewModel extends StateNotifier<BookingPageViewState> {
       final List<Artist> updatedArtists = [];
 
       for (final artist in oldArtists) {
-        final assets =
-            await _artistRepository.getAllAssetsOfArtist(artist.id);
+        final assets = await _artistRepository.getAllAssetsOfArtist(artist.id);
 
         updatedArtists.add(
           artist.copyWith(assets: assets),

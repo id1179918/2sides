@@ -69,3 +69,17 @@ class Artist {
     );
   }
 }
+
+List<Artist> sortByPosition(List<Artist> artists) {
+  artists.sort((a, b) {
+    // both null — keep original order
+    if (a.position == null && b.position == null) return 0;
+    // a is null — push a after b
+    if (a.position == null) return 1;
+    // b is null — push b after a
+    if (b.position == null) return -1;
+    // both have position — sort ascending (0 first)
+    return a.position!.compareTo(b.position!);
+  });
+  return artists;
+}

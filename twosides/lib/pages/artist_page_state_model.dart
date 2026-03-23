@@ -5,16 +5,17 @@ import 'package:twosides/twosides_provider.dart';
 import 'package:twosides/models/entity_asset.dart';
 import 'dart:developer';
 
-final artistPageViewModelProvider = StateNotifierProvider.autoDispose.family<ArtistPageViewModel, ArtistPageViewState, int>(
-  (ref, artistId) {
-    return ArtistPageViewModel(ref.watch(artistRepositoryProvider), artistId);
-  }
-);
+final artistPageViewModelProvider = StateNotifierProvider.autoDispose
+    .family<ArtistPageViewModel, ArtistPageViewState, int>((ref, artistId) {
+  return ArtistPageViewModel(ref.watch(artistRepositoryProvider), artistId);
+});
 
 class ArtistPageViewModel extends StateNotifier<ArtistPageViewState> {
   final ArtistRepository _artistRepository;
   final int artistId;
-  ArtistPageViewModel(this._artistRepository, this.artistId): super(ArtistPageViewState(const AsyncData(null), const AsyncData(null))) {
+  ArtistPageViewModel(this._artistRepository, this.artistId)
+      : super(
+            ArtistPageViewState(const AsyncData(null), const AsyncData(null))) {
     loadArtist(artistId);
     loadAllArtists();
   }
@@ -34,7 +35,8 @@ class ArtistPageViewModel extends StateNotifier<ArtistPageViewState> {
   Future<Artist> loadArtistAssets(Artist artist) async {
     if (artist == null) {
       throw FormatException('Failed to load artist');
-    };
+    }
+    ;
 
     try {
       final Artist updatedArtist;
@@ -52,7 +54,8 @@ class ArtistPageViewModel extends StateNotifier<ArtistPageViewState> {
   Future<Artist> loadArtistLinks(Artist artist) async {
     if (artist == null) {
       throw FormatException('Failed to load artist');
-    };
+    }
+    ;
 
     try {
       final Artist updatedArtist;
@@ -71,7 +74,8 @@ class ArtistPageViewModel extends StateNotifier<ArtistPageViewState> {
     state = ArtistPageViewState(state.artist, const AsyncLoading());
     try {
       List<Artist> artists = await _artistRepository.getAllArtists();
-      state = ArtistPageViewState(state.artist, AsyncData(artists));
+      state =
+          ArtistPageViewState(state.artist, AsyncData(sortByPosition(artists)));
     } catch (e, s) {
       state = ArtistPageViewState(state.artist, AsyncError(e, s));
     }

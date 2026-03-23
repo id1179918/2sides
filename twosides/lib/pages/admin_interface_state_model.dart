@@ -55,8 +55,8 @@ class AdminInterfaceViewModel extends StateNotifier<AdminInterfaceViewState> {
       List<Artist> artistsWithAssets = await loadAllArtistsAssets(artists);
       List<Artist> artistsWithLinks =
           await loadAllArtistLinks(artistsWithAssets);
-      state = AdminInterfaceViewState(
-          state.pageType, AsyncData(artistsWithLinks), state.admin);
+      state = AdminInterfaceViewState(state.pageType,
+          AsyncData(sortByPosition(artistsWithLinks)), state.admin);
     } catch (e, s) {
       state = AdminInterfaceViewState(
           state.pageType, AsyncError(e, s), state.admin);
