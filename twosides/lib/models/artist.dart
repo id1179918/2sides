@@ -9,6 +9,7 @@ class Artist {
   String? style;
   String? description;
   String? label;
+  int? position;
   final List<Asset>? assets;
   final List<Link>? links;
 
@@ -33,6 +34,7 @@ class Artist {
     this.style,
     this.description,
     this.label,
+    this.position,
     this.assets,
     this.links,
   });
@@ -46,6 +48,7 @@ class Artist {
       description:
           json['description'] == null ? "" : json['description'] as String,
       label: json['label'] == null ? "" : json['label'] as String,
+      position: json['position'] == null ? 0 : json['position'] as int,
     );
   }
 
@@ -60,6 +63,7 @@ class Artist {
       location: location,
       description: description,
       label: label,
+      position: position,
       assets: assets ?? this.assets,
       links: links ?? this.links,
     );
