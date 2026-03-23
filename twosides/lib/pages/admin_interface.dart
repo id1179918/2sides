@@ -636,6 +636,10 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
       return false;
     }
 
+    print(widget.artist.position == null
+        ? "99"
+        : widget.artist.position!.toString());
+
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(children: [
         Text("Nom d'artist"),
