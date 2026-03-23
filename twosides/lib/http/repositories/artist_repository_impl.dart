@@ -168,7 +168,8 @@ class ArtistRepositoryImpl implements ArtistRepository {
             "location": artist.location ?? "",
             "style": artist.style ?? "",
             "description": artist.description ?? "",
-            "label": artist.label ?? ""
+            "label": artist.label ?? "",
+            "position": artist.position ?? 99,
           }));
 
       return await client.handleResponse<Auth>(
