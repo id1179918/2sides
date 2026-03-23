@@ -1006,7 +1006,7 @@ class _ArtistInfoFieldState extends ConsumerState<ArtistInfoField> {
                 location: _locationController.text,
                 description: _descriptionController.text,
                 label: _labelController.text,
-                position: int.tryParse(_positionController.text) ?? 99,
+                position: int.tryParse(_positionController.text) ?? 98,
               );
               await ref
                   .read(adminInterfaceViewModelProvider.notifier)
