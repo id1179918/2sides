@@ -571,12 +571,11 @@ class _ArtistBodyState extends State<ArtistBody> {
   Widget build(BuildContext context) {
     if (widget.artist.assets != null) {
       int assetIndexId = widget.artist.assets!
-                  .indexWhere((asset) => asset.role == AssetRole.gallery) !=
-              -1
-          ? widget.artist.assets!
-              .indexWhere((asset) => asset.role == AssetRole.gallery)
-          : widget.artist.assets!
-              .indexWhere((asset) => asset.role == AssetRole.primary);
+          .indexWhere((asset) => asset.role == AssetRole.gallery);
+      if (assetIndexId == -1) {
+        assetIndexId = widget.artist.assets!
+            .indexWhere((asset) => asset.role == AssetRole.primary);
+      }
       _assetId = widget.artist.assets![assetIndexId].id.toString();
     }
 
