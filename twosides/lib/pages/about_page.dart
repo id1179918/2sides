@@ -33,7 +33,7 @@ class AboutPage extends ConsumerWidget {
                 child: const Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Text(
-                      "2Sides est une agence de booking d'artistes émergents dans les domaines de la musique, du stand-up et du théâtre. Nous nous engageons à promouvoir la diversité culturelle en mettant en avant des talents issus de tous horizons. Notre mission est de connecter les artistes avec des opportunités de performance tout en offrant une expérience unique à notre public.",
+                      "2Sides est une agence de booking d'artistes émergents dans le domaine de la musique. Nous nous engageons à promouvoir la diversité culturelle en mettant en avant des talents issus de tous horizons. Notre mission est de connecter les artistes avec des opportunités de performance tout en offrant une expérience unique à notre public.",
                       style: TextStyle(
                         color: TwoSidesColors.primaryColor,
                         fontFamily: 'NeueMetanaNext',
